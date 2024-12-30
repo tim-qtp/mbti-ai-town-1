@@ -1,0 +1,27 @@
+{
+  "frames": {
+    "pixels_large1.png": {
+      "frame": { "x": 128, "y": 32, "w": 32, "h": 32 },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 }
+    },
+    "pixels_large2.png": {
+      "frame": { "x": 128, "y": 128, "w": 32, "h": 32 },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
+      "sourceSize": { "w": 32, "h": 32 }
+    }
+  },
+  "animations": {
+    "pixels_large": ["pixels_large1.png", "pixels_large2.png"]
+  },
+  "meta": {
+    "image": "./spritesheets/beachedges.png",
+    "format": "RGBA8888",
+    "size": { "w": 160, "h": 192 },
+    "scale": "1"
+  }
+}

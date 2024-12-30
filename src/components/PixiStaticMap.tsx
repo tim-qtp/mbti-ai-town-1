@@ -2,24 +2,44 @@ import { PixiComponent, applyDefaultProps } from '@pixi/react';
 import * as PIXI from 'pixi.js';
 import { AnimatedSprite, WorldMap } from '../../convex/aiTown/worldMap';
 import * as campfire from '../../data/animations/campfire.json';
-import * as gentlesparkle from '../../data/animations/gentlesparkle.json';
-import * as gentlewaterfall from '../../data/animations/gentlewaterfall.json';
-import * as gentlesplash from '../../data/animations/gentlesplash.json';
-import * as windmill from '../../data/animations/windmill.json';
+import * as bubbles1 from '../../data/animations/bubbles1.json';
+import * as bubbles2 from '../../data/animations/bubbles1.json';
+import * as fish from '../../data/animations/fish.json';
+import * as whale from '../../data/animations/whale.json';
+import * as topleft from '../../data/animations/1.json';
+import * as topmiddle from '../../data/animations/2.json';
+import * as topright from '../../data/animations/3.json';
+import * as middleleft from '../../data/animations/4.json';
+import * as middleright from '../../data/animations/5.json';
+import * as bottomleft from '../../data/animations/6.json';
+import * as bottommiddle from '../../data/animations/7.json';
+import * as bottomright from '../../data/animations/8.json';
+import * as innertopleft from '../../data/animations/9.json';
+import * as innertopright from '../../data/animations/10.json';
+import * as innerbottomleft from '../../data/animations/11.json';
+import * as innerbottomright from '../../data/animations/12.json';
 
 const animations = {
-  'campfire.json': { spritesheet: campfire, url: '/ai-town/assets/spritesheets/campfire.png' },
-  'gentlesparkle.json': {
-    spritesheet: gentlesparkle,
-    url: '/ai-town/assets/spritesheets/gentlesparkle32.png',
+  'campfire.json': { spritesheet: campfire, url: '/ai-island/assets/spritesheets/campfire.png' },
+  'bubbles1.json': { spritesheet: bubbles1, url: '/ai-island/assets/spritesheets/bubbles1.png' },
+  'bubbles2.json': { spritesheet: bubbles2, url: '/ai-island/assets/spritesheets/bubbles2.png' },
+  'fish.json': { spritesheet: fish, url: '/ai-island/assets/spritesheets/bubbles1.png' },
+  'whale.json': { spritesheet: whale, url: '/ai-island/assets/spritesheets/bubbles2.png' },
+  '1.json': { spritesheet: topleft, url: '/ai-island/assets/spritesheets/beachedges.png' },
+  '2.json': { spritesheet: topmiddle, url: '/ai-island/assets/spritesheets/beachedges.png' },
+  '3.json': { spritesheet: topright, url: '/ai-island/assets/spritesheets/beachedges.png' },
+  '4.json': { spritesheet: middleleft, url: '/ai-island/assets/spritesheets/beachedges.png' },
+  '5.json': { spritesheet: middleright, url: '/ai-island/assets/spritesheets/beachedges.png' },
+  '6.json': { spritesheet: bottomleft, url: '/ai-island/assets/spritesheets/beachedges.png' },
+  '7.json': { spritesheet: bottommiddle, url: '/ai-island/assets/spritesheets/beachedges.png' },
+  '8.json': { spritesheet: bottomright, url: '/ai-island/assets/spritesheets/beachedges.png' },
+  '9.json': { spritesheet: innertopleft, url: '/ai-island/assets/spritesheets/beachedges.png' },
+  '10.json': { spritesheet: innertopright, url: '/ai-island/assets/spritesheets/beachedges.png' },
+  '11.json': { spritesheet: innerbottomleft, url: '/ai-island/assets/spritesheets/beachedges.png' },
+  '12.json': {
+    spritesheet: innerbottomright,
+    url: '/ai-island/assets/spritesheets/beachedges.png',
   },
-  'gentlewaterfall.json': {
-    spritesheet: gentlewaterfall,
-    url: '/ai-town/assets/spritesheets/gentlewaterfall32.png',
-  },
-  'windmill.json': { spritesheet: windmill, url: '/ai-town/assets/spritesheets/windmill.png' },
-  'gentlesplash.json': { spritesheet: gentlesplash,
-    url: '/ai-town/assets/spritesheets/gentlewaterfall32.png',},
 };
 
 export const PixiStaticMap = PixiComponent('StaticMap', {
