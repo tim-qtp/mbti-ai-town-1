@@ -190,8 +190,8 @@ export class Player {
     let position;
     for (let attempt = 0; attempt < 10; attempt++) {
       const candidate = {
-        x: Math.floor(Math.random() * game.worldMap.width),
-        y: Math.floor(Math.random() * game.worldMap.height),
+        x: Math.floor(Math.random() * (game.worldMap.width / 2) + game.worldMap.width / 4),
+        y: Math.floor(Math.random() * (game.worldMap.height / 2) + game.worldMap.height / 4),
       };
       if (blocked(game, now, candidate)) {
         continue;

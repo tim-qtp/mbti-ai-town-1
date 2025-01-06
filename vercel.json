@@ -2,7 +2,7 @@
   "framework": "vite",
   "rewrites": [
     {
-      "source": "/ai-town/:match*",
+      "source": "/ai-island/:match*",
       "destination": "/:match*"
     }
   ]

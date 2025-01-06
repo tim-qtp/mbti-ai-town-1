@@ -67,7 +67,7 @@ export const stopAllowed = query({
 
 export const stop = mutation({
   handler: async (ctx) => {
-    if (process.env.STOP_NOT_ALLOWED) throw new Error('Stop not allowed');
+    // if (process.env.STOP_NOT_ALLOWED) throw new Error('Stop not allowed');
     const { worldStatus, engine } = await getDefaultWorld(ctx.db);
     if (worldStatus.status === 'inactive' || worldStatus.status === 'stoppedByDeveloper') {
       if (engine.running) {

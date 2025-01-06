@@ -2,8 +2,7 @@
 
 export const LLM_CONFIG = {
   /* Ollama (local) config:
-   */
-  ollama: true,
+    ollama: true,
   url: 'http://127.0.0.1:11434',
   chatModel: 'llama3' as const,
   embeddingModel: 'mxbai-embed-large',
@@ -12,16 +11,16 @@ export const LLM_CONFIG = {
   apiKey: () => undefined,
   // embeddingModel: 'llama3',
   // embeddingDimension: 4096,
+  */
 
-  /* Together.ai config:
+  // Together.ai config:
   ollama: false,
   url: 'https://api.together.xyz',
-  chatModel: 'meta-llama/Llama-3-8b-chat-hf',
+  chatModel: 'meta-llama/Llama-Vision-Free',
   embeddingModel: 'togethercomputer/m2-bert-80M-8k-retrieval',
   embeddingDimension: 768,
   stopWords: ['<|eot_id|>'],
   apiKey: () => process.env.TOGETHER_API_KEY ?? process.env.LLM_API_KEY,
-   */
 
   /* OpenAI config:
   ollama: false,

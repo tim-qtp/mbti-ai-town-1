@@ -1,4 +1,4 @@
-export const ACTION_TIMEOUT = 120_000; // more time for local dev
+export const ACTION_TIMEOUT = 240_000; // more time for local dev
 // export const ACTION_TIMEOUT = 60_000;// normally fine
 
 export const IDLE_WORLD_TIMEOUT = 5 * 60 * 1000;
@@ -19,16 +19,16 @@ export const COLLISION_THRESHOLD = 0.75;
 export const MAX_HUMAN_PLAYERS = 8;
 
 // Don't talk to anyone for 15s after having a conversation.
-export const CONVERSATION_COOLDOWN = 15000;
+export const CONVERSATION_COOLDOWN = 60000;
 
 // Don't do another activity for 10s after doing one.
 export const ACTIVITY_COOLDOWN = 10_000;
 
 // Don't talk to a player within 60s of talking to them.
-export const PLAYER_CONVERSATION_COOLDOWN = 60000;
+export const PLAYER_CONVERSATION_COOLDOWN = 180000;
 
 // Invite 80% of invites that come from other agents.
-export const INVITE_ACCEPT_PROBABILITY = 0.8;
+export const INVITE_ACCEPT_PROBABILITY = 0.7; // normally 0.7
 
 // Wait for 1m for invites to be accepted.
 export const INVITE_TIMEOUT = 60000;
@@ -53,10 +53,10 @@ export const INPUT_DELAY = 1000;
 export const NUM_MEMORIES_TO_SEARCH = 3;
 
 // Wait for at least two seconds before sending another message.
-export const MESSAGE_COOLDOWN = 2000;
+export const MESSAGE_COOLDOWN = 10000;
 
 // Don't run a turn of the agent more than once a second.
-export const AGENT_WAKEUP_THRESHOLD = 1000;
+export const AGENT_WAKEUP_THRESHOLD = 10000; // 10 seconds
 
 // How old we let memories be before we vacuum them
 export const VACUUM_MAX_AGE = 2 * 7 * 24 * 60 * 60 * 1000;
@@ -65,9 +65,9 @@ export const DELETE_BATCH_SIZE = 64;
 export const HUMAN_IDLE_TOO_LONG = 5 * 60 * 1000;
 
 export const ACTIVITIES = [
-  { description: 'reading a book', emoji: '📖', duration: 60_000 },
-  { description: 'daydreaming', emoji: '🤔', duration: 60_000 },
-  { description: 'gardening', emoji: '🥕', duration: 60_000 },
+  { description: 'reading a book', emoji: '📖', duration: 60_000 }, // 20 minutes
+  { description: 'daydreaming', emoji: '🤔', duration: 60_000 }, // 10 minutes
+  { description: 'gardening', emoji: '🥕', duration: 60_000 }, // 1 hour
 ];
 
 export const ENGINE_ACTION_DURATION = 30000;

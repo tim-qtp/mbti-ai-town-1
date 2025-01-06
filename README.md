@@ -1,10 +1,10 @@
 # AI Town 🏠💻💌
 
-[Live Demo](https://www.convex.dev/ai-town)
+[Live Demo](https://www.convex.dev/ai-island)
 
 [Join our community Discord: AI Stack Devs](https://discord.gg/PQUmTBTGmT)
 
-<img width="1454" alt="Screen Shot 2023-08-14 at 10 01 00 AM" src="https://github.com/a16z-infra/ai-town/assets/3489963/a4c91f17-23ed-47ec-8c4e-9f9a8505057d">
+<img width="1454" alt="Screen Shot 2023-08-14 at 10 01 00 AM" src="https://github.com/a16z-infra/ai-island/assets/3489963/a4c91f17-23ed-47ec-8c4e-9f9a8505057d">
 
 AI Town is a virtual town where AI characters live, chat and socialize.
 
@@ -49,8 +49,8 @@ for anyone interested in running but not modifying it 😎
 ### 1. Clone repo and Install packages
 
 ```bash
-git clone https://github.com/a16z-infra/ai-town.git
-cd ai-town
+git clone https://github.com/a16z-infra/ai-island.git
+cd ai-island
 npm install
 ```
 
@@ -195,7 +195,7 @@ Modify your `package.json` file to add the `--host` option to your front-end ser
 
 ```json
 {
-  "name": "ai-town",
+  "name": "ai-island",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -214,6 +214,7 @@ Modify your `package.json` file to add the `--host` option to your front-end ser
 ### Launching Docker Compose
 
 Run the following command to launch Docker Compose:
+
 ```sh
 docker-compose up --build
 ```
@@ -223,38 +224,41 @@ Once completed, you can close the terminal.
 ### Launching an Interactive Docker Terminal
 
 In another terminal, still in the `aitown` directory, launch an interactive Docker terminal:
+
 ```bash
-docker-compose exec ai-town /bin/bash
+docker-compose exec ai-island /bin/bash
 ```
 
 ### Running Locally
 
 1. Download and unzip the local Convex backend:
-    ```bash
-    curl -L -O https://github.com/get-convex/convex-backend/releases/download/precompiled-2024-06-28-91981ab/convex-local-backend-x86_64-unknown-linux-gnu.zip
-    unzip convex-local-backend-x86_64-unknown-linux-gnu.zip
-    ```
-   
+   ```bash
+   curl -L -O https://github.com/get-convex/convex-backend/releases/download/precompiled-2024-06-28-91981ab/convex-local-backend-x86_64-unknown-linux-gnu.zip
+   unzip convex-local-backend-x86_64-unknown-linux-gnu.zip
+   ```
 2. Verify the `convex-local-backend` file is in the directory, then remove the zip file:
-    ```bash
-    rm convex-local-backend-x86_64-unknown-linux-gnu.zip
-    ```
+
+   ```bash
+   rm convex-local-backend-x86_64-unknown-linux-gnu.zip
+   ```
 
 3. Make the file executable:
-    ```bash
-    chmod +x /usr/src/app/convex-local-backend
-    ```
+
+   ```bash
+   chmod +x /usr/src/app/convex-local-backend
+   ```
 
 4. Launch the Convex backend server:
-    ```bash
-    ./convex-local-backend
-    ```
+   ```bash
+   ./convex-local-backend
+   ```
 
 ### Relaunching an Interactive Docker Terminal for aitown server
 
 In another terminal, in the `aitown` directory, relaunch:
+
 ```sh
-docker-compose exec ai-town /bin/bash
+docker-compose exec ai-island /bin/bash
 ```
 
 ### Configuring Socat
@@ -269,6 +273,7 @@ socat TCP-LISTEN:11434,fork TCP:$HOST_IP:11434 &
 ### Testing the Connection
 
 Test the connection:
+
 ```bash
 curl http://localhost:11434/
 ```
@@ -278,28 +283,32 @@ If it says "Ollama is running", it's good!
 ### Starting Services
 
 Make sure Convex knows where to find Ollama (to skip a random mysterious bug ...):
+
 ```bash
 just convex env set OLLAMA_HOST http://localhost:11434
 ```
 
 Update the browser list:
+
 ```bash
 npx update-browserslist-db@latest
 ```
 
 Launch AI Town:
+
 ```bash
 npm run dev
 ```
 
 ### For relaunching
-launch container then 
-Simply open two terminal in your AI-town folder with docker-compose exec ai-town /bin/bash
+
+launch container then
+Simply open two terminal in your ai-island folder with docker-compose exec ai-island /bin/bash
 
 Launch the Convex backend server:
-    ```bash
+`bash
     ./convex-local-backend
-    ```
+    `
 And in the second terminal simply Configuring Socat, Launch AI Town.
 
 ## Windows Installation
@@ -374,8 +383,8 @@ If it responds OK, the Ollama API is accessible.
 
 Clone the AI Town repository from GitHub:
 
-    git clone https://github.com/a16z-infra/ai-town.git
-    cd ai-town
+    git clone https://github.com/a16z-infra/ai-island.git
+    cd ai-island
 
 ### 10. Install NPM Packages
 
@@ -412,25 +421,21 @@ Finally, launch AI Town:
 
 Visit `http://localhost:5173` in your browser to see AI Town in action.
 
-### Relaunching AI Town on windows WSL : 
+### Relaunching AI Town on windows WSL :
 
 If you need to restart the services:
 
 1. Ensure `socat` is running:
 
-    socat TCP-LISTEN:11434,fork TCP:$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):11434 &
+   socat TCP-LISTEN:11434,fork TCP:$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):11434 &
 
 2. Launch Convex:
 
-    ./convex-local-backend
+   ./convex-local-backend
 
-In another terminal : 
-3. Launch AI Town:
+In another terminal : 3. Launch AI Town:
 
     npm run dev
-
-
-
 
 ## Customize your own simulation
 
