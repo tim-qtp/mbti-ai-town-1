@@ -1,14 +1,10 @@
-# AI Town 🏠💻💌
+# Artificial Island 🏝️
 
-[Live Demo](https://www.convex.dev/ai-island)
+[Live Demo](https://)
 
-[Join our community Discord: AI Stack Devs](https://discord.gg/PQUmTBTGmT)
+Artificial Island is an interactive game show where AI agents with distinct personalities live, interact, and compete for your support. Watch as they roam around their pixelated paradise, engage in conversations, and form unique relationships.
 
-<img width="1454" alt="Screen Shot 2023-08-14 at 10 01 00 AM" src="https://github.com/a16z-infra/ai-island/assets/3489963/a4c91f17-23ed-47ec-8c4e-9f9a8505057d">
-
-AI Town is a virtual town where AI characters live, chat and socialize.
-
-This project is a deployable starter kit for easily building and customizing your own version of AI town.
+This project is a fork of the deployable starter kit for easily building and customizing your own version of an AI town found at: https://github.com/a16z-infra/ai-town
 Inspired by the research paper [_Generative Agents: Interactive Simulacra of Human Behavior_](https://arxiv.org/pdf/2304.03442.pdf).
 
 The primary goal of this project, beyond just being a lot of fun to work on,
@@ -42,17 +38,7 @@ A secondary goal is to make a JS/TS framework available as most simulators in th
 
 ## Installation
 
-**Note**: There is a one-click install of a fork of this project on
-[Pinokio](https://pinokio.computer/item?uri=https://github.com/cocktailpeanutlabs/aitown)
-for anyone interested in running but not modifying it 😎
-
 ### 1. Clone repo and Install packages
-
-```bash
-git clone https://github.com/a16z-infra/ai-island.git
-cd ai-island
-npm install
-```
 
 ### 2. To develop locally with [Convex](https://convex.dev):
 
@@ -294,7 +280,7 @@ Update the browser list:
 npx update-browserslist-db@latest
 ```
 
-Launch AI Town:
+Launch:
 
 ```bash
 npm run dev
@@ -309,7 +295,7 @@ Launch the Convex backend server:
 `bash
     ./convex-local-backend
     `
-And in the second terminal simply Configuring Socat, Launch AI Town.
+And in the second terminal simply Configuring Socat, Launch.
 
 ## Windows Installation
 
@@ -379,12 +365,9 @@ Test if it's working:
 
 If it responds OK, the Ollama API is accessible.
 
-### 9. Clone the AI Town Repository
+### 9. Clone the Repository
 
-Clone the AI Town repository from GitHub:
-
-    git clone https://github.com/a16z-infra/ai-island.git
-    cd ai-island
+Clone the repository from GitHub
 
 ### 10. Install NPM Packages
 
@@ -413,15 +396,15 @@ Set the Ollama host in Convex:
 
     just convex env set OLLAMA_HOST http://localhost:11434
 
-### 14. Launch AI Town
+### 14. Launch
 
-Finally, launch AI Town:
+Finally, launch:
 
     npm run dev
 
-Visit `http://localhost:5173` in your browser to see AI Town in action.
+Visit `http://localhost:5173` in your browser to see in action.
 
-### Relaunching AI Town on windows WSL :
+### Relaunching on windows WSL :
 
 If you need to restart the services:
 
@@ -433,7 +416,7 @@ If you need to restart the services:
 
    ./convex-local-backend
 
-In another terminal : 3. Launch AI Town:
+In another terminal : 3. Launch:
 
     npm run dev
 

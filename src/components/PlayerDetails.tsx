@@ -9,6 +9,9 @@ import { useSendInput } from '../hooks/sendInput';
 import { Player } from '../../convex/aiTown/player';
 import { GameId } from '../../convex/aiTown/ids';
 import { ServerGame } from '../hooks/serverGame';
+import { getBalance, SendSolButton } from './WalletComponent';
+import AgentList from './AgentList';
+import { useEffect, useState } from 'react';
 
 export default function PlayerDetails({
   worldId,
@@ -26,7 +29,6 @@ export default function PlayerDetails({
   scrollViewRef: React.RefObject<HTMLDivElement>;
 }) {
   const humanTokenIdentifier = useQuery(api.world.userStatus, { worldId });
-
   const players = [...game.world.players.values()];
   const humanPlayer = players.find((p) => p.human === humanTokenIdentifier);
   const humanConversation = humanPlayer ? game.world.playerConversation(humanPlayer) : undefined;
@@ -55,9 +57,12 @@ export default function PlayerDetails({
 
   if (!playerId) {
     return (
-      <div className="h-full text-xl flex text-center items-center p-4">
-        Click on an agent on the map to see chat history.
-      </div>
+      <>
+        <AgentList setSelectedElement={setSelectedElement} />;
+        <div className="h-full text-xl flex text-center items-center bubble-notip  mt-4">
+          <p className="bg-white text-black"> Click on an agent on the map to see chat history.</p>
+        </div>
+      </>
     );
   }
   if (!player) {
@@ -135,7 +140,7 @@ export default function PlayerDetails({
     <>
       <div className="flex gap-4">
         <div className="box w-3/4 sm:w-full mr-auto">
-          <h2 className="bg-brown-700 p-2 font-display text-2xl sm:text-4xl tracking-wider shadow-solid text-center">
+          <h2 className="bg-[#964253] p-2 font-display text-2xl sm:text-4xl tracking-wider shadow-solid text-center">
             {playerDescription?.name}
           </h2>
         </div>
@@ -216,13 +221,13 @@ export default function PlayerDetails({
       )}
       {!playerConversation && player.activity && player.activity.until > Date.now() && (
         <div className="box flex-grow mt-6">
-          <h2 className="bg-brown-700 text-base sm:text-lg text-center">
+          <h2 className="bg-[#964253] text-base sm:text-lg text-center">
             {player.activity.description}
           </h2>
         </div>
       )}
       <div className="desc my-6">
-        <p className="leading-tight -m-4 bg-brown-700 text-base sm:text-sm">
+        <p className="leading-tight -m-4 bg-[#964253] text-base sm:text-sm">
           {!isMe && playerDescription?.description}
           {isMe && <i>This is you!</i>}
           {!isMe && inConversationWithMe && (
@@ -245,8 +250,8 @@ export default function PlayerDetails({
       )}
       {!playerConversation && previousConversation && (
         <>
-          <div className="box flex-grow">
-            <h2 className="bg-brown-700 text-lg text-center">Previous conversation</h2>
+          <div className="box flex-grow my-2">
+            <h2 className="bg-[#964253] text-lg text-center">Previous conversation</h2>
           </div>
           <Messages
             worldId={worldId}

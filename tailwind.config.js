@@ -1,4 +1,4 @@
-import formsPlugin from '@tailwindcss/forms'
+import formsPlugin from '@tailwindcss/forms';
 
 /** @type {import('tailwindcss').Config} */
 export default {

@@ -12,7 +12,7 @@ import { DebugTimeManager } from './DebugTimeManager.tsx';
 import { GameId } from '../../convex/aiTown/ids.ts';
 import { useServerGame } from '../hooks/serverGame.ts';
 
-export const SHOW_DEBUG_UI = !!import.meta.env.VITE_SHOW_DEBUG_UI;
+export const SHOW_DEBUG_UI = false;
 
 export default function Game() {
   const convex = useConvex();
@@ -36,50 +36,69 @@ export default function Game() {
 
   const scrollViewRef = useRef<HTMLDivElement>(null);
 
+  const [isPlayerDetailOpen, setIsPlayerDetailOpen] = useState(true);
+
+  const togglePlayerDetail = () => {
+    setIsPlayerDetailOpen(!isPlayerDetailOpen);
+  };
+
   if (!worldId || !engineId || !game) {
     return null;
   }
   return (
-    <>
-      {SHOW_DEBUG_UI && <DebugTimeManager timeManager={timeManager} width={200} height={100} />}
-      <div className="mx-auto w-full max-w grid grid-rows-[240px_1fr] lg:grid-rows-[1fr] lg:grid-cols-[1fr_auto] lg:grow max-w-[1400px] min-h-[480px] game-frame">
-        {/* Game area */}
-        <div className="relative overflow-hidden bg-brown-900" ref={gameWrapperRef}>
-          <div className="absolute inset-0">
-            <div className="container">
-              <Stage width={width} height={height} options={{ backgroundColor: 0x7ab5ff }}>
-                {/* Re-propagate context because contexts are not shared between renderers.
-https://github.com/michalochman/react-pixi-fiber/issues/145#issuecomment-531549215 */}
-                <ConvexProvider client={convex}>
-                  <PixiGame
-                    game={game}
-                    worldId={worldId}
-                    engineId={engineId}
-                    width={width}
-                    height={height}
-                    historicalTime={historicalTime}
-                    setSelectedElement={setSelectedElement}
-                  />
-                </ConvexProvider>
-              </Stage>
-            </div>
-          </div>
-        </div>
-        {/* Right column area */}
-        <div
-          className="flex flex-col overflow-y-auto shrink-0 px-4 py-6 sm:px-6 lg:w-96 xl:pr-6 border-t-8 sm:border-t-0 sm:border-l-8 border-brown-900  bg-brown-800 text-brown-100"
-          ref={scrollViewRef}
-        >
-          <PlayerDetails
-            worldId={worldId}
-            engineId={engineId}
-            game={game}
-            playerId={selectedElement?.id}
-            setSelectedElement={setSelectedElement}
-            scrollViewRef={scrollViewRef}
-          />
+    <div className="flex flex-col h-screen w-full lg:flex-row">
+      {/* Game area (full width on mobile, right column on desktop) */}
+      <div
+        className="flex-grow overflow-hidden bg-blue-400 order-1 lg:order-2"
+        ref={gameWrapperRef}
+      >
+        <div className="w-full h-full">
+          <Stage width={width} height={height} options={{ backgroundColor: 0x4ca6ff }}>
+            <ConvexProvider client={convex}>
+              <PixiGame
+                game={game}
+                worldId={worldId}
+                engineId={engineId}
+                width={width}
+                height={height}
+                historicalTime={historicalTime}
+                setSelectedElement={setSelectedElement}
+              />
+            </ConvexProvider>
+          </Stage>
         </div>
       </div>
-    </>
+
+      {/* Player Details area (expandable on mobile, left column on desktop) */}
+      <div className="lg:w-96 flex-shrink-0 bg-blue-300 text-brown-100 border-t-4 lg:border-t-0 lg:border-r-4 border-black order-2 lg:order-1">
+        {/* Mobile toggle button */}
+        <button
+          className="lg:hidden w-full py-2 px-4 flex justify-between items-center bg-blue-500 text-white"
+          onClick={togglePlayerDetail}
+        >
+          <span>Player Details</span>
+          {isPlayerDetailOpen ? <div>DOWN!!!</div> : <div>UP!!!</div>}
+        </button>
+
+        {/* Player Details content */}
+        <div
+          className={`overflow-y-auto transition-all duration-300 ease-in-out ${
+            isPlayerDetailOpen ? 'max-h-96' : 'max-h-0 lg:max-h-full'
+          } lg:h-full`}
+          ref={scrollViewRef}
+        >
+          <div className="px-4 py-6">
+            <PlayerDetails
+              worldId={worldId}
+              engineId={engineId}
+              game={game}
+              playerId={selectedElement?.id}
+              setSelectedElement={setSelectedElement}
+              scrollViewRef={scrollViewRef}
+            />
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }

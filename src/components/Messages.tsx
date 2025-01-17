@@ -89,8 +89,9 @@ export function Messages({
   const membershipNodes: typeof messageNodes = [];
   if (conversation.kind === 'active') {
     for (const [playerId, m] of conversation.doc.participants) {
-      const playerName = descriptions?.playerDescriptions.find((p) => p.playerId === playerId)
-        ?.name;
+      const playerName = descriptions?.playerDescriptions.find(
+        (p) => p.playerId === playerId,
+      )?.name;
       let started;
       if (m.status.kind === 'participating') {
         started = m.status.started;
@@ -108,8 +109,9 @@ export function Messages({
     }
   } else {
     for (const playerId of conversation.doc.participants) {
-      const playerName = descriptions?.playerDescriptions.find((p) => p.playerId === playerId)
-        ?.name;
+      const playerName = descriptions?.playerDescriptions.find(
+        (p) => p.playerId === playerId,
+      )?.name;
       const started = conversation.doc.created;
       membershipNodes.push({
         node: (
@@ -136,7 +138,7 @@ export function Messages({
   nodes.sort((a, b) => a.time - b.time);
   return (
     <div className="chats text-base sm:text-sm">
-      <div className="bg-brown-200 text-black p-2">
+      <div className="bg-[#ffe478] text-black p-2">
         {nodes.length > 0 && nodes.map((n) => n.node)}
         {currentlyTyping && currentlyTyping.playerId !== humanPlayerId && (
           <div key="typing" className="leading-tight mb-6">

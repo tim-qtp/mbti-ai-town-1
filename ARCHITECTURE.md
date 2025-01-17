@@ -1,8 +1,8 @@
 # Architecture
 
-This documents dives into the high-level architecture of AI Town and its different layers. We'll
+This documents dives into the high-level architecture and its different layers. We'll
 first start with a brief overview and then go in-depth on each component. The overview should
-be sufficient for forking AI Town and changing game or agent behavior. Read on to the deep dives
+be sufficient for forking and changing game or agent behavior. Read on to the deep dives
 if you're interested or running up against the engine's limitations.
 
 This doc assumes the reader has a working knowledge of Convex. If you're new to Convex, check out
@@ -10,15 +10,15 @@ the [Convex tutorial](https://docs.convex.dev/get-started) to get started.
 
 ## Overview
 
-AI Town is split into a few layers:
+Split into a few layers:
 
-- The server-side game logic in `convex/aiTown`: This layer defines what state AI Town maintains,
+- The server-side game logic in `convex/aiTown`: This layer defines what state maintains,
   how it evolves over time, and how it reacts to user input. Both humans and agents submit inputs
   that the game engine processes.
-- The client-side game UI in `src/`: AI Town uses `pixi-react` to render the game state to the
+- The client-side game UI in `src/`: uses `pixi-react` to render the game state to the
   browser for human consumption.
 - The game engine in `convex/engine`: To make it easy to hack on the game rules, we've separated
-  out the game engine from the AI Town-specific game rules. The game engine is responsible for
+  out the game engine from the specific game rules. The game engine is responsible for
   saving and loading game state from the database, coordinating feeding inputs into the engine,
   and actually running the game engine in Convex functions.
 - The agent in `convex/agent`: Agents run as part of the game loop, and can kick off asynchronous
@@ -35,11 +35,11 @@ If you have parts of your game that are more latency sensitive, you can move the
 into regular Convex tables, queries, and mutations, only logging key bits into game state. See
 "Message data model" below for an example.
 
-## AI Town game logic (`convex/aiTown`)
+## game logic (`convex/aiTown`)
 
 ### Data model
 
-AI Town's data model has a few concepts:
+data model has a few concepts:
 
 - Worlds (`convex/aiTown/world.ts`) represent a map with many players interacting together.
 - Players (`convex/aiTown/player.ts`) are the core characters in the game. Players have human readable names and
@@ -60,19 +60,19 @@ There are three main categories of tables:
 
 1. Engine tables (`convex/engine/schema.ts`) for maintaining engine-internal state.
 2. Game tables (`convex/aiTown/schema.ts`) for game state. To keep game state small and efficient to
-   read and write, we store AI Town's data model across a few tables. See `convex/aiTown/schema.ts` for an overview.
+   read and write, we store data model across a few tables. See `convex/aiTown/schema.ts` for an overview.
 3. Agent tables (`convex/agent/schema.ts`) for agent state. Agents can freely read and write to these tables
    within their actions.
 
 ### Inputs (`convex/aiTown/inputs.ts`)
 
-AI Town modifies its data model by processing inputs. Inputs are submitted by players and agents and
+modifies its data model by processing inputs. Inputs are submitted by players and agents and
 processed by the game engine. We specify inputs in the `inputs` object in `convex/aiTown/inputs.ts`.
 Use the `inputHandler` function to construct an input handler, specifying a Convex validator for
 arguments for end-to-end type-safety.
 
 - Joining (`join`) and leaving (`leave`) the game.
-- Moving a player to a particular location (`moveTo`): Movement in AI Town is similar to RTS games, where
+- Moving a player to a particular location (`moveTo`): Movement is similar to RTS games, where
   the players specify where they want to go, and the engine figures out how to get there.
 - Starting a conversation (`startConversation`), accepting an invite (`acceptInvite`), rejecting an invite
   (`rejectInvite`), and leaving a conversation (`leaveConversation`). To track typing indicators,
@@ -113,7 +113,7 @@ that don't directly go through the simulation.
 
 ## Game engine (`convex/engine`)
 
-Given the description of AI Town's game behavior in the previous section,
+Given the description of the game behavior in the previous section,
 the `AbstractGame` class in `convex/engine/abstractGame.ts` implements actually running the simulation.
 The game engine has a few responsibilities:
 
@@ -123,7 +123,7 @@ The game engine has a few responsibilities:
 - Saving and loading game state from the database.
 - Managing executing the game behavior, efficiently using Convex resources and minimizing input latency.
 
-AI Town's game behavior is implemented in the `Game` subclass.
+game behavior is implemented in the `Game` subclass.
 
 ### Input handling
 
@@ -139,14 +139,14 @@ on an input's status with the `inputStatus` query.
 The `Game` class specifies how it simulates time forward with the `tick` method:
 
 - `tick(now)` runs the simulation forward until the given timestamp
-- Ticks are run at a high frequency, configurable with `tickDuration` (milliseconds). Since AI town has smooth motion
+- Ticks are run at a high frequency, configurable with `tickDuration` (milliseconds). Since has smooth motion
   for player movement, it runs at 60 ticks per second.
 - It's generally a good idea to break up game logic into separate systems that can be ticked forward independently.
-  For example, AI Town's `tick` method advances pathfinding with `Player.tickPathfinding`, player positions with
+  For example, `tick` method advances pathfinding with `Player.tickPathfinding`, player positions with
   `Player.tickPosition`, conversations with `Conversation.tick`, and `Agent.tick` for agent logic.
 
 To avoid running a Convex mutation 60 times per second (which would be expensive and slow), the engine batches up
-many ticks into a _step_. AI town runs steps at only 1 time per second. Here's how a step works:
+many ticks into a _step_. runs steps at only 1 time per second. Here's how a step works:
 
 1. Load the game state into memory.
 2. Decide how long to run.
@@ -215,7 +215,7 @@ write it to the `worlds` document at the end of a step when computing a diff.
 
 ## Client-side game UI (`src/`)
 
-One guiding principle for AI Town's architecture is to keep the usage as close to "regular Convex" usage as possible. So,
+One guiding principle for architecture is to keep the usage as close to "regular Convex" usage as possible. So,
 game state is stored in regular tables, and the UI just uses regular `useQuery` hooks to load that state and render
 it in the UI.
 
@@ -272,7 +272,7 @@ text in a Convex table.
 
 ## Design goals and limitations
 
-AI Town's game engine has a few design goals:
+game engine has a few design goals:
 
 - Try to be as close to a regular Convex app as possible. Use regular client hooks (like `useQuery`)
   when possible, and store game state in regular tables.
@@ -298,4 +298,4 @@ These design goals imply some inherent limitations:
   calls and database bandwidth.
 - The game engine is designed to be single threaded. JavaScript operating over plain objects
   in-memory can be surprisingly fast, but if your simulation is very computationally expensive, it
-  may not be a good fit on AI Town's engine today.
+  may not be a good fit on engine today.
