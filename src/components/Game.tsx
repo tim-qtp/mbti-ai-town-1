@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react';
 import PixiGame from './PixiGame.tsx';
-
+import upImg from '../../assets/upwhite.svg';
+import downImg from '../../assets/downwhite.svg';
 import { useElementSize } from 'usehooks-ts';
 import { Stage } from '@pixi/react';
 import { ConvexProvider, useConvex, useQuery } from 'convex/react';
@@ -11,6 +12,7 @@ import { useHistoricalTime } from '../hooks/useHistoricalTime.ts';
 import { DebugTimeManager } from './DebugTimeManager.tsx';
 import { GameId } from '../../convex/aiTown/ids.ts';
 import { useServerGame } from '../hooks/serverGame.ts';
+import Button from './buttons/Button.tsx';
 
 export const SHOW_DEBUG_UI = false;
 
@@ -36,7 +38,7 @@ export default function Game() {
 
   const scrollViewRef = useRef<HTMLDivElement>(null);
 
-  const [isPlayerDetailOpen, setIsPlayerDetailOpen] = useState(true);
+  const [isPlayerDetailOpen, setIsPlayerDetailOpen] = useState(false);
 
   const togglePlayerDetail = () => {
     setIsPlayerDetailOpen(!isPlayerDetailOpen);
@@ -63,6 +65,7 @@ export default function Game() {
                 height={height}
                 historicalTime={historicalTime}
                 setSelectedElement={setSelectedElement}
+                togglePlayerDetail={setIsPlayerDetailOpen}
               />
             </ConvexProvider>
           </Stage>
@@ -70,20 +73,26 @@ export default function Game() {
       </div>
 
       {/* Player Details area (expandable on mobile, left column on desktop) */}
-      <div className="lg:w-96 flex-shrink-0 bg-blue-300 text-brown-100 border-t-4 lg:border-t-0 lg:border-r-4 border-black order-2 lg:order-1">
+      <div className="lg:w-96  flex-shrink-0 bg-blue-300 text-brown-100  lg:border-t-0 lg:border-r-4 border-t-4 border-black order-2 lg:order-1">
         {/* Mobile toggle button */}
         <button
-          className="lg:hidden w-full py-2 px-4 flex justify-between items-center bg-blue-500 text-white"
+          className="lg:hidden w-full py-2 px-2 flex justify-between items-center bg-transparent border-b-4 border-black text-white"
           onClick={togglePlayerDetail}
         >
-          <span>Player Details</span>
-          {isPlayerDetailOpen ? <div>DOWN!!!</div> : <div>UP!!!</div>}
+          <div className=" w-fit lg:w-full lg:text-center text-2xl lg:text-5xl font-bold font-display shadow-solid box">
+            <p className="bg-[#964253] p-1">Artificial Island</p>
+          </div>
+          <div className="connect-wallet">
+            <button className=" flex  justify-center text-white shadow-solid  pointer-events-auto ">
+              <img src={isPlayerDetailOpen ? downImg : upImg} width={31} height={31} alt="up" />
+            </button>
+          </div>
         </button>
 
         {/* Player Details content */}
         <div
           className={`overflow-y-auto transition-all duration-300 ease-in-out ${
-            isPlayerDetailOpen ? 'max-h-96' : 'max-h-0 lg:max-h-full'
+            isPlayerDetailOpen ? 'max-h-96 lg:max-h-full' : 'max-h-0 lg:max-h-full'
           } lg:h-full`}
           ref={scrollViewRef}
         >

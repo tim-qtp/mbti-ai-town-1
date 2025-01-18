@@ -61,20 +61,12 @@ export default function AgentList({ setSelectedElement }: AgentListProps) {
   return (
     <>
       <div className="flex justify-between">
-        <div className=" w-fit lg:w-full lg:text-center text-2xl lg:text-5xl font-bold font-display shadow-solid box">
+        <div className="hidden lg:block w-full lg:text-center text-2xl lg:text-5xl font-bold font-display shadow-solid box">
           <p className="bg-[#964253] p-1">Artificial Island</p>
         </div>
-        <a
-          className="button text-white shadow-solid text-2xl cursor-pointer pointer-events-auto"
-          onClick={() => {}}
-        >
-          <h2 className="h-full bg-clay-700">
-            <img className="w-4 h-4 sm:w-5 sm:h-5" src={closeImg} />
-          </h2>
-        </a>
       </div>
 
-      <div className="mt-4 chats text-black">
+      <div className="lg:mt-4 chats text-black">
         <div className="bg-[#ffe478] p-2">
           <div className="flex justify-between items-center">
             <p className="text-lg">Agents in-play:</p>
@@ -88,7 +80,7 @@ export default function AgentList({ setSelectedElement }: AgentListProps) {
                 <li key={agent.name} className="flex justify-between items-center ">
                   <p
                     onClick={() => setSelectedElement({ kind: 'player', id: agent.id })}
-                    className="cursor-pointer hover:underline py-2"
+                    className="cursor-pointer hover:underline py-2 underline underline-offset-2"
                   >
                     {agent.name}
                   </p>

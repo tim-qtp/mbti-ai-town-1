@@ -10,6 +10,7 @@ import { useHistoricalValue } from '../hooks/useHistoricalValue.ts';
 import { PlayerDescription } from '../../convex/aiTown/playerDescription.ts';
 import { WorldMap } from '../../convex/aiTown/worldMap.ts';
 import { ServerGame } from '../hooks/serverGame.ts';
+import { Dispatch, SetStateAction } from 'react';
 
 export type SelectElement = (element?: { kind: 'player'; id: GameId<'players'> }) => void;
 
@@ -21,6 +22,7 @@ export const Player = ({
   player,
   onClick,
   historicalTime,
+  togglePlayerDetail,
 }: {
   game: ServerGame;
   isViewer: boolean;
@@ -28,6 +30,7 @@ export const Player = ({
 
   onClick: SelectElement;
   historicalTime?: number;
+  togglePlayerDetail: Dispatch<SetStateAction<boolean>>;
 }) => {
   const playerCharacter = game.playerDescriptions.get(player.id)?.character;
   if (!playerCharacter) {
@@ -84,6 +87,7 @@ export const Player = ({
         speed={character.speed}
         onClick={() => {
           onClick({ kind: 'player', id: player.id });
+          togglePlayerDetail(true);
         }}
       />
     </>

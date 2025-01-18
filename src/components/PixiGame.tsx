@@ -1,7 +1,7 @@
 import * as PIXI from 'pixi.js';
 import { useApp } from '@pixi/react';
 import { Player, SelectElement } from './Player.tsx';
-import { useEffect, useRef, useState } from 'react';
+import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react';
 import { PixiStaticMap } from './PixiStaticMap.tsx';
 import PixiViewport from './PixiViewport.tsx';
 import { Viewport } from 'pixi-viewport';
@@ -23,6 +23,7 @@ export const PixiGame = (props: {
   width: number;
   height: number;
   setSelectedElement: SelectElement;
+  togglePlayerDetail: Dispatch<SetStateAction<boolean>>;
 }) => {
   // PIXI setup.
   const pixiApp = useApp();
@@ -123,6 +124,7 @@ export const PixiGame = (props: {
           isViewer={p.id === humanPlayerId}
           onClick={props.setSelectedElement}
           historicalTime={props.historicalTime}
+          togglePlayerDetail={props.togglePlayerDetail}
         />
       ))}
     </PixiViewport>
