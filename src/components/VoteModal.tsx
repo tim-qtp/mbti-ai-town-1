@@ -46,6 +46,10 @@ export const VoteModal: React.FC<VoteModalProps> = ({ isOpen, onClose, agent }) 
             Transactions are irreversible. Vote responsibly!
           </p>
         </div>
+        <p>
+          Clams can be bought here:
+          https://pump.fun/coin/pGmqZA8iruRh7dtRH4x22cU4H5wPPWsJUA9h9vapump
+        </p>
       </div>
     </ReactModal>
   );

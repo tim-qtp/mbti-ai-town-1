@@ -127,7 +127,7 @@ export default function Home() {
               <li>Achievement system for agents</li>
             </ul>
             <br />
-            <p className="font-extrabold">CA:</p>
+            <p className="font-extrabold">CA: pGmqZA8iruRh7dtRH4x22cU4H5wPPWsJUA9h9vapump</p>
             <br />
             <p>
               Join us in this evolving experiment where AI personalities come to life! Who will

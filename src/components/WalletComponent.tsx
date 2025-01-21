@@ -45,7 +45,7 @@ export async function getBalance(walletAddress: string): Promise<number> {
 
   try {
     const walletPublicKey = new PublicKey(walletAddress);
-    const tokenMintPublicKey = new PublicKey('BhePPrRHVS3YSSHphcXgxN3cBAAiSnVZ9n9NNM5Xpump');
+    const tokenMintPublicKey = new PublicKey('pGmqZA8iruRh7dtRH4x22cU4H5wPPWsJUA9h9vapump'); // "YOUR_CLAM_CONTRACT_ADDRESS_HERE"
 
     // Get all token accounts for this wallet
     const accounts = await connection.getParsedTokenAccountsByOwner(walletPublicKey, {
