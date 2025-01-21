@@ -7,7 +7,10 @@ import {
   SystemProgram,
   LAMPORTS_PER_SOL,
 } from '@solana/web3.js';
+import { TOKEN_PROGRAM_ID, AccountLayout } from '@solana/spl-token';
+
 import Button from './buttons/Button';
+
 import * as buffer from 'buffer';
 window.Buffer = buffer.Buffer;
 
@@ -34,18 +37,33 @@ export function ConnectWalletButton() {
   );
 }
 
-export async function getBalance(address: string): Promise<number> {
+export async function getBalance(walletAddress: string): Promise<number> {
   const connection = new Connection(
     'https://grateful-jerrie-fast-mainnet.helius-rpc.com',
     'confirmed',
   );
 
   try {
-    const publicKey = new PublicKey(address);
-    const balance = await connection.getBalance(publicKey);
-    return balance / LAMPORTS_PER_SOL;
+    const walletPublicKey = new PublicKey(walletAddress);
+    const tokenMintPublicKey = new PublicKey('BhePPrRHVS3YSSHphcXgxN3cBAAiSnVZ9n9NNM5Xpump');
+
+    // Get all token accounts for this wallet
+    const accounts = await connection.getParsedTokenAccountsByOwner(walletPublicKey, {
+      mint: tokenMintPublicKey,
+    });
+
+    // If no token account found, return 0
+    if (accounts.value.length === 0) {
+      return 0;
+    }
+
+    // Get the balance from the token account
+    // This method returns parsed data that doesn't require Buffer
+    const balance = accounts.value[0].account.data.parsed.info.tokenAmount.uiAmount;
+
+    return balance;
   } catch (error) {
-    console.error('Error fetching balance:', error);
+    console.error('Error fetching token balance:', error);
     return 0;
   }
 }

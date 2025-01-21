@@ -2,7 +2,7 @@ import { useState, useEffect, useMemo } from 'react';
 import { SendSolButton } from './WalletComponent';
 import { getBalance } from './WalletComponent';
 import type { GameId } from '../../convex/aiTown/ids';
-import closeImg from '../../assets/close.svg';
+import { VoteModal } from './VoteModal';
 
 interface Agent {
   name: string;
@@ -49,6 +49,8 @@ interface AgentListProps {
 
 export default function AgentList({ setSelectedElement }: AgentListProps) {
   const [balances, setBalances] = useState<{ [key: string]: number | null }>({});
+  const [isVoteModalOpen, setIsVoteModalOpen] = useState(false);
+  const [selectedAgent, setSelectedAgent] = useState<Agent | null>(null);
 
   useEffect(() => {
     const fetchBalances = async () => {
@@ -76,6 +78,16 @@ export default function AgentList({ setSelectedElement }: AgentListProps) {
     });
   }, [balances]);
 
+  const openVoteModal = (agent: Agent) => {
+    setSelectedAgent(agent);
+    setIsVoteModalOpen(true);
+  };
+
+  const closeVoteModal = () => {
+    setIsVoteModalOpen(false);
+    setSelectedAgent(null);
+  };
+
   return (
     <>
       <div className="flex justify-between">
@@ -102,17 +114,23 @@ export default function AgentList({ setSelectedElement }: AgentListProps) {
                   >
                     {agent.name}
                   </p>
-                  <SendSolButton recipientAddress={agent.address} />
+                  {/*  <button
+                    className="flex justify-center button text-xs bg-clay-700 text-white rounded-xl pointer-events-auto"
+                    onClick={() => openVoteModal(agent)}
+                  >
+                    Vote
+                  </button> */}
+
                   <div className="flex items-center">
                     <img
                       className="mr-1"
-                      src="/assets/solanalogo.png"
+                      src="/assets/clam.svg"
                       width="20"
                       height="20"
-                      alt="SOL"
+                      alt="CLAM"
                     />
                     {balances[agent.name] !== undefined ? (
-                      <p>{balances[agent.name]?.toFixed(3) ?? 'Error'}</p>
+                      <p>{balances[agent.name]?.toFixed(0) ?? 'Error'}</p>
                     ) : (
                       <div className="w-5 h-5 mx-auto border-4 border-t-yellow-500 border-yellow-200 rounded-full animate-spin"></div>
                     )}
@@ -123,6 +141,8 @@ export default function AgentList({ setSelectedElement }: AgentListProps) {
           </div>
         </div>
       </div>
+
+      <VoteModal isOpen={isVoteModalOpen} onClose={closeVoteModal} agent={selectedAgent} />
     </>
   );
 }

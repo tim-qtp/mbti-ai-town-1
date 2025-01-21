@@ -192,6 +192,15 @@ p[contenteditable='true']:empty::before {
   padding-bottom: 23px !important;
 }
 
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  outline: none;
+}
+
 @media (max-width: 640px) {
   .button {
     height: 40px;
@@ -216,4 +225,16 @@ p[contenteditable='true']:empty::before {
     border-width: 0.75em;
     vertical-align: top !important;
   }
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
