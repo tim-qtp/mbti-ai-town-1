@@ -28,7 +28,7 @@ export const ACTIVITY_COOLDOWN = 30_000;
 export const PLAYER_CONVERSATION_COOLDOWN = 600000;
 
 // Invite 80% of invites that come from other agents.
-export const INVITE_ACCEPT_PROBABILITY = 0.5; // normally 0.7
+export const INVITE_ACCEPT_PROBABILITY = 0.8; // normally 0.7
 
 // Wait for 1m for invites to be accepted.
 export const INVITE_TIMEOUT = 60000;
