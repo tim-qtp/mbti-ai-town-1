@@ -5,6 +5,7 @@ import { ToastContainer } from 'react-toastify';
 import xImg from '../assets/xlogo.svg';
 import gitLogo from '../assets/githublogo.svg';
 import helpImg from '../assets/help.svg';
+import closeImg from '../assets/closeblack.svg';
 // import { UserButton } from '@clerk/clerk-react';
 // import { Authenticated, Unauthenticated } from 'convex/react';
 // import LoginButton from './components/buttons/LoginButton.tsx';
@@ -64,10 +65,20 @@ export default function Home() {
       }}
     >
       <main className="relative flex min-h-screen flex-col items-center justify-between font-body game-">
+        {helpModalOpen && (
+          <a
+            onClick={() => setHelpModalOpen(false)}
+            className="button absolute right-0 z-50 text-white shadow-solid text-2xl cursor-pointer pointer-events-auto"
+          >
+            <h2 className="h-full bg-clay-700">
+              <img className="w-4 h-4 sm:w-5 sm:h-5" src={closeImg} />
+            </h2>
+          </a>
+        )}
         <ReactModal
           isOpen={helpModalOpen}
           onRequestClose={() => setHelpModalOpen(false)}
-          className="bg-clay-900 mt-10 mx-20 p-4 px-10 border-4 border-black"
+          className="bg-clay-900 mt-10 lg:mt-10 mx-10 lg:mx-20 p-1 lg:p-4 pb-10 px-10 border-4 border-black h-screen overflow-y-scroll"
           contentLabel="Help modal"
           ariaHideApp={false}
         >
@@ -132,7 +143,6 @@ export default function Home() {
           <LoginButton />
         </Unauthenticated>
       </div> */}
-
         <div className="w-full lg:h-screen min-h-screen relative isolate overflow-hidden  shadow-2xl flex flex-col justify-start">
           {/*  <h1 className="mx-auto text-2xl p-3 sm:text-8xl lg:text-9xl font-bold font-display leading-none tracking-wide game-title w-full text-left sm:text-center sm:w-auto">
           Artificial Island
