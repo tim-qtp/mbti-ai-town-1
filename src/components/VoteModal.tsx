@@ -11,7 +11,7 @@ interface VoteModalProps {
   } | null;
 }
 
-const CLAM_CONTRACT_ADDRESS = 'YOUR_CLAM_CONTRACT_ADDRESS_HERE';
+const CLAM_CONTRACT_ADDRESS = 'pGmqZA8iruRh7dtRH4x22cU4H5wPPWsJUA9h9vapump';
 
 export const VoteModal: React.FC<VoteModalProps> = ({ isOpen, onClose, agent }) => {
   if (!agent) return null;
