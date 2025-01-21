@@ -21,6 +21,7 @@ const agents: Agent[] = [
     address: '5zpGkyMgSuTh359RArWmB4y1cbhS33ZqRk8GQuLK5Uxy',
     id: 'p:2' as GameId<'players'>,
   },
+
   {
     name: 'Edison',
     address: 'ASa2SCBd4MVFqetY9XTX2f1ddp2tK2K88CNWqCnaoznw',
@@ -35,6 +36,11 @@ const agents: Agent[] = [
     name: 'Pete',
     address: 'HPXvdSLmfyaMokvpk5562AP1yw4aVtzaAKJF82X1m21N',
     id: 'p:8' as GameId<'players'>,
+  },
+  {
+    name: 'Kira',
+    address: '8tZPb74cRyKdEeymW6dS4YT8wA2TajvXFALda9Mor641',
+    id: 'p:10' as GameId<'players'>,
   },
 ];
 
