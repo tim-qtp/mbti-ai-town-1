@@ -22,7 +22,7 @@ export const MAX_HUMAN_PLAYERS = 8;
 export const CONVERSATION_COOLDOWN = 180000;
 
 // Don't do another activity for 10s after doing one.
-export const ACTIVITY_COOLDOWN = 30_000;
+export const ACTIVITY_COOLDOWN = 20_000;
 
 // Don't talk to a player within 60s of talking to them.
 export const PLAYER_CONVERSATION_COOLDOWN = 600000;
@@ -65,9 +65,9 @@ export const DELETE_BATCH_SIZE = 64;
 export const HUMAN_IDLE_TOO_LONG = 5 * 60 * 1000;
 
 export const ACTIVITIES = [
-  { description: 'reading a book', emoji: '📖', duration: 60_000 * 10 }, // 10 minutes
-  { description: 'daydreaming', emoji: '🤔', duration: 60_000 * 5 }, // 4 minutes
-  { description: 'gardening', emoji: '🥕', duration: 60_000 * 8 }, // 8 minutes
+  { description: 'reading a book', emoji: '📖', duration: 60_000 }, // 10 minutes
+  { description: 'daydreaming', emoji: '🤔', duration: 60_000 }, // 4 minutes
+  { description: 'gardening', emoji: '🥕', duration: 60_000 }, // 8 minutes
 ];
 
 export const ENGINE_ACTION_DURATION = 30000;

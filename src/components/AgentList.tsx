@@ -12,12 +12,12 @@ interface Agent {
 
 const agents: Agent[] = [
   {
-    name: 'Lambo',
+    name: 'Alice',
     address: 'EiC9h9YLEGTdsU2GNcgPeNnpB9HwrQU8u9o4oY3LwrWd',
     id: 'p:6' as GameId<'players'>,
   },
   {
-    name: 'Triamph',
+    name: 'Triumph',
     address: '5zpGkyMgSuTh359RArWmB4y1cbhS33ZqRk8GQuLK5Uxy',
     id: 'p:2' as GameId<'players'>,
   },
@@ -32,14 +32,9 @@ const agents: Agent[] = [
     id: 'p:0' as GameId<'players'>,
   },
   {
-    name: 'Alice',
+    name: 'Pete',
     address: 'HPXvdSLmfyaMokvpk5562AP1yw4aVtzaAKJF82X1m21N',
     id: 'p:8' as GameId<'players'>,
-  },
-  {
-    name: 'Kira',
-    address: '7KrDaA4HaFkSAgBrPVuXcJsgdTETXc8qqSQsmpajHNCU',
-    id: 'p:10' as GameId<'players'>,
   },
 ];
 
