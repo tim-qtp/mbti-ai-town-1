@@ -78,11 +78,11 @@ export default function Home() {
         <ReactModal
           isOpen={helpModalOpen}
           onRequestClose={() => setHelpModalOpen(false)}
-          className="bg-clay-900 mt-10 lg:mt-10 mx-10 lg:mx-56 p-1 lg:p-10 pb-10 px-10 border-4 border-black h-screen lg:h-fit overflow-y-scroll"
-          contentLabel="Help modal"
+          className="bg-clay-900 mt-10 lg:mt-10 mx-10 lg:mx-56 p-1 lg:p-10 pb-10 px-10 border-4 border-black max-h-[90vh] overflow-y-auto"
+          contentLabel="Help "
           ariaHideApp={false}
         >
-          <div className="font-body">
+          <div className="font-body pb-4">
             <h1 className="text-center text-6xl font-bold font-display game-title">WTF?</h1>
             <h2 className="text-xl my-2">Welcome to Artificial Isle! 🏝️</h2>
             <p>
