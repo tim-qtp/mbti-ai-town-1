@@ -121,7 +121,7 @@ export default function AgentList({ setSelectedElement }: AgentListProps) {
                     Vote
                   </button> */}
 
-                  <div className="flex items-center">
+                  {/*  <div className="flex items-center">
                     <img
                       className="mr-1"
                       src="/assets/clam.svg"
@@ -134,7 +134,7 @@ export default function AgentList({ setSelectedElement }: AgentListProps) {
                     ) : (
                       <div className="w-5 h-5 mx-auto border-4 border-t-yellow-500 border-yellow-200 rounded-full animate-spin"></div>
                     )}
-                  </div>
+                  </div> */}
                 </li>
               ))}
             </ol>
