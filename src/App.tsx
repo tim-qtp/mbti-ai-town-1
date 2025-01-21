@@ -68,7 +68,7 @@ export default function Home() {
         {helpModalOpen && (
           <a
             onClick={() => setHelpModalOpen(false)}
-            className="button absolute right-0 z-50 text-white shadow-solid text-2xl cursor-pointer pointer-events-auto"
+            className="button absolute right-2  top-2 z-50 text-white shadow-solid text-2xl cursor-pointer pointer-events-auto"
           >
             <h2 className="h-full bg-clay-700">
               <img className="w-4 h-4 sm:w-5 sm:h-5" src={closeImg} />
@@ -78,7 +78,7 @@ export default function Home() {
         <ReactModal
           isOpen={helpModalOpen}
           onRequestClose={() => setHelpModalOpen(false)}
-          className="bg-clay-900 mt-10 lg:mt-10 mx-10 lg:mx-20 p-1 lg:p-4 pb-10 px-10 border-4 border-black h-screen overflow-y-scroll"
+          className="bg-clay-900 mt-10 lg:mt-10 mx-10 lg:mx-56 p-1 lg:p-10 pb-10 px-10 border-4 border-black h-screen lg:h-fit overflow-y-scroll"
           contentLabel="Help modal"
           ariaHideApp={false}
         >
