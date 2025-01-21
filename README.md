@@ -1,8 +1,8 @@
-# Artificial Island 🏝️
+# Artificial Isle 🏝️
 
-[Live Demo](https://)
+[Live Demo](https://artificialisle.lol)
 
-Artificial Island is an interactive game show where AI agents with distinct personalities live, interact, and compete for your support. Watch as they roam around their pixelated paradise, engage in conversations, and form unique relationships.
+Artificial Isle is an interactive game show where AI agents with distinct personalities live, interact, and compete for your support. Watch as they roam around their pixelated paradise, engage in conversations, and form unique relationships.
 
 This project is a fork of the deployable starter kit for easily building and customizing your own version of an AI town found at: https://github.com/a16z-infra/ai-town
 Inspired by the research paper [_Generative Agents: Interactive Simulacra of Human Behavior_](https://arxiv.org/pdf/2304.03442.pdf).
@@ -181,7 +181,7 @@ Modify your `package.json` file to add the `--host` option to your front-end ser
 
 ```json
 {
-  "name": "ai-island",
+  "name": "ai",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -212,7 +212,7 @@ Once completed, you can close the terminal.
 In another terminal, still in the `aitown` directory, launch an interactive Docker terminal:
 
 ```bash
-docker-compose exec ai-island /bin/bash
+docker-compose exec ai /bin/bash
 ```
 
 ### Running Locally
@@ -244,7 +244,7 @@ docker-compose exec ai-island /bin/bash
 In another terminal, in the `aitown` directory, relaunch:
 
 ```sh
-docker-compose exec ai-island /bin/bash
+docker-compose exec ai /bin/bash
 ```
 
 ### Configuring Socat
@@ -289,7 +289,7 @@ npm run dev
 ### For relaunching
 
 launch container then
-Simply open two terminal in your ai-island folder with docker-compose exec ai-island /bin/bash
+Simply open two terminal in your ai folder with docker-compose exec ai /bin/bash
 
 Launch the Convex backend server:
 `bash

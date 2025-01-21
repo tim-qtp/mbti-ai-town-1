@@ -2,7 +2,7 @@
   "framework": "vite",
   "rewrites": [
     {
-      "source": "/ai-island/:match*",
+      "source": "/ai/:match*",
       "destination": "/:match*"
     }
   ]

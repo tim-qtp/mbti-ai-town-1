@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { SendSolButton } from './WalletComponent';
 import { getBalance } from './WalletComponent';
-import { GameId } from '../../convex/aiTown/ids';
+import type { GameId } from '../../convex/aiTown/ids';
 import closeImg from '../../assets/close.svg';
 
 interface Agent {
@@ -12,29 +12,34 @@ interface Agent {
 
 const agents: Agent[] = [
   {
-    name: 'Alice',
+    name: 'Lambo',
     address: 'EiC9h9YLEGTdsU2GNcgPeNnpB9HwrQU8u9o4oY3LwrWd',
     id: 'p:6' as GameId<'players'>,
   },
   {
-    name: 'Bob',
+    name: 'Triamph',
     address: '5zpGkyMgSuTh359RArWmB4y1cbhS33ZqRk8GQuLK5Uxy',
     id: 'p:2' as GameId<'players'>,
   },
   {
-    name: 'Stella',
+    name: 'Edison',
     address: 'ASa2SCBd4MVFqetY9XTX2f1ddp2tK2K88CNWqCnaoznw',
     id: 'p:4' as GameId<'players'>,
   },
   {
-    name: 'Lucky',
+    name: 'Stella',
     address: 'H2PxCyH2PbMP2xBhut5qDrr8TwGztt1NdaPzBw1KZj3u',
     id: 'p:0' as GameId<'players'>,
   },
   {
-    name: 'Pete',
+    name: 'Alice',
     address: 'HPXvdSLmfyaMokvpk5562AP1yw4aVtzaAKJF82X1m21N',
     id: 'p:8' as GameId<'players'>,
+  },
+  {
+    name: 'Pete',
+    address: '7KrDaA4HaFkSAgBrPVuXcJsgdTETXc8qqSQsmpajHNCU',
+    id: 'p:10' as GameId<'players'>,
   },
 ];
 
@@ -43,14 +48,19 @@ interface AgentListProps {
 }
 
 export default function AgentList({ setSelectedElement }: AgentListProps) {
-  const [balances, setBalances] = useState<{ [key: string]: number }>({});
+  const [balances, setBalances] = useState<{ [key: string]: number | null }>({});
 
   useEffect(() => {
     const fetchBalances = async () => {
-      const newBalances: { [key: string]: number } = {};
+      const newBalances: { [key: string]: number | null } = {};
       for (const agent of agents) {
-        const balance = await getBalance(agent.address);
-        newBalances[agent.name] = balance;
+        try {
+          const balance = await getBalance(agent.address);
+          newBalances[agent.name] = balance;
+        } catch (error) {
+          console.error(`Error fetching balance for ${agent.name}:`, error);
+          newBalances[agent.name] = null;
+        }
       }
       setBalances(newBalances);
     };
@@ -58,11 +68,19 @@ export default function AgentList({ setSelectedElement }: AgentListProps) {
     fetchBalances();
   }, []);
 
+  const sortedAgents = useMemo(() => {
+    return [...agents].sort((a, b) => {
+      const balanceA = balances[a.name] ?? -1;
+      const balanceB = balances[b.name] ?? -1;
+      return balanceB - balanceA;
+    });
+  }, [balances]);
+
   return (
     <>
       <div className="flex justify-between">
         <div className="hidden lg:block w-full lg:text-center text-2xl lg:text-5xl font-bold font-display shadow-solid box">
-          <p className="bg-[#964253] p-1">Artificial Island</p>
+          <p className="bg-[#964253] p-1">Artificial Isle</p>
         </div>
       </div>
 
@@ -76,7 +94,7 @@ export default function AgentList({ setSelectedElement }: AgentListProps) {
           <div className="mt-2 bg-black w-full h-[1px]" />
           <div className="bubble-notip">
             <ol className="flex flex-col gap-4 bg-white">
-              {agents.map((agent) => (
+              {sortedAgents.map((agent) => (
                 <li key={agent.name} className="flex justify-between items-center ">
                   <p
                     onClick={() => setSelectedElement({ kind: 'player', id: agent.id })}
@@ -93,16 +111,10 @@ export default function AgentList({ setSelectedElement }: AgentListProps) {
                       height="20"
                       alt="SOL"
                     />
-                    {balances[agent.name] ? (
-                      <>
-                        <p>{balances[agent.name]?.toFixed(3)}</p>
-                      </>
+                    {balances[agent.name] !== undefined ? (
+                      <p>{balances[agent.name]?.toFixed(3) ?? 'Error'}</p>
                     ) : (
-                      <>
-                        <div className="">
-                          <div className="w-5 h-5 mx-auto border-4 border-t-yellow-500 border-yellow-200 rounded-full animate-spin"></div>
-                        </div>
-                      </>
+                      <div className="w-5 h-5 mx-auto border-4 border-t-yellow-500 border-yellow-200 rounded-full animate-spin"></div>
                     )}
                   </div>
                 </li>

@@ -3,6 +3,7 @@ import Game from './components/Game.tsx';
 import { ToastContainer } from 'react-toastify';
 
 import xImg from '../assets/xlogo.svg';
+import gitLogo from '../assets/githublogo.svg';
 import helpImg from '../assets/help.svg';
 // import { UserButton } from '@clerk/clerk-react';
 // import { Authenticated, Unauthenticated } from 'convex/react';
@@ -50,8 +51,8 @@ export default function Home() {
         autoConnect: false,
         env: 'mainnet-beta',
         metadata: {
-          name: 'ai-island',
-          description: 'ai-island',
+          name: 'ai',
+          description: 'ai',
           url: 'localhost:5173',
           iconUrls: ['https://jup.ag/favicon.ico'],
         },
@@ -66,20 +67,20 @@ export default function Home() {
         <ReactModal
           isOpen={helpModalOpen}
           onRequestClose={() => setHelpModalOpen(false)}
-          style={modalStyles}
+          className="bg-clay-900 mt-10 mx-20 p-4 px-10 border-4 border-black"
           contentLabel="Help modal"
           ariaHideApp={false}
         >
           <div className="font-body">
             <h1 className="text-center text-6xl font-bold font-display game-title">WTF?</h1>
-            <h2 className="text-xl my-2">Welcome to Artificial Island! 🏝️</h2>
+            <h2 className="text-xl my-2">Welcome to Artificial Isle! 🏝️</h2>
             <p>
               Ever wondered what would happen if you put AI personalities on an island together?
               Well, now you can find out!
             </p>
             <h2 className="text-2xl mt-4">What is This?</h2>
             <p>
-              Artificial Island is an interactive game show where AI agents with distinct
+              Artificial Isle is an interactive game show where AI agents with distinct
               personalities live, interact, and compete for your support. Watch as they roam around
               their pixelated paradise, engage in conversations, and form unique relationships.
             </p>
@@ -101,12 +102,11 @@ export default function Home() {
             </ul>
             <p> </p>
             <h2 className="text-2xl mt-4">Coming Soon™</h2>
-            <p>
-              Here are some features we're considering for future updates: Custom island areas
-              designed by the community Mini-games between agents
-            </p>
+            <p>Here are some features we're considering for future updates:</p>
             <ul className="list-disc pl-4">
-              <li>Interact with agents if user holds enough Clams</li>
+              <li>Token launch with liquidity backed by tips collected</li>
+              <li>Mini games between agents</li>
+              <li>Interact with agents if user holds enough tokens</li>
               <li>Special events and challenges for the agents </li>
               <li>Different island themes and seasonal changes </li>
               <li>Community voting on new agent personalities</li>
@@ -115,8 +115,8 @@ export default function Home() {
               <li>Agent skills and activities (fishing, building, crafting)</li>
               <li>Agent relationships and alliances</li>
               <li>Achievement system for agents</li>
-              <li>Mini-games</li>
             </ul>
+            <br />
             <p>
               Join us in this evolving experiment where AI personalities come to life! Who will
               become your favorite islander?
@@ -125,7 +125,7 @@ export default function Home() {
         </ReactModal>
         {/*<div className="p-3 absolute top-0 right-0 z-10 text-2xl">
         <Authenticated>
-          <UserButton afterSignOutUrl="/ai-island" />
+          <UserButton afterSignOutUrl="/ai" />
         </Authenticated>
 
         <Unauthenticated>
@@ -152,7 +152,7 @@ export default function Home() {
                   <div className="w-16 h-16 mx-auto border-4 border-t-blue-500 border-blue-200 rounded-full animate-spin"></div>
                 </div>
                 <h2 className="text-2xl font-display text-white mb-2 game-title">
-                  Connecting to Artificial Island...
+                  Connecting to Artificial Isle...
                 </h2>
                 <div className="text-sm text-gray-400 font-pixel animate-pulse">
                   Opening viewport to the ongoing adventure
@@ -173,7 +173,11 @@ export default function Home() {
                 wtf
               </Button>
               <MusicButton />
-              <Button href="https://x.com/artificialisland" imgUrl={xImg}></Button>
+              <Button href="https://x.com/artificialisle" imgUrl={xImg}></Button>
+              <Button
+                href="https://github.com/artificialisland/artificialisle"
+                imgUrl={gitLogo}
+              ></Button>
             </div>
           </footer>
           <ToastContainer position="bottom-right" autoClose={2000} closeOnClick theme="dark" />
@@ -182,25 +186,3 @@ export default function Home() {
     </UnifiedWalletProvider>
   );
 }
-
-const modalStyles = {
-  overlay: {
-    backgroundColor: 'rgb(0, 0, 0, 75%)',
-    zIndex: 12,
-  },
-  content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-    maxWidth: '50%',
-
-    border: '10px solid rgb(0,0,1)',
-    borderRadius: '0',
-    background: 'rgb(35, 38, 58)',
-    color: 'white',
-    fontFamily: '"Upheaval Pro", "sans-serif"',
-  },
-};
