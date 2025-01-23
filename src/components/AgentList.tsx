@@ -3,6 +3,7 @@ import { SendSolButton } from './WalletComponent';
 import { getBalance } from './WalletComponent';
 import type { GameId } from '../../convex/aiTown/ids';
 import { VoteModal } from './VoteModal';
+import { WeekCountdown } from './WeekCountdown';
 
 interface Agent {
   name: string;
@@ -100,8 +101,8 @@ export default function AgentList({ setSelectedElement }: AgentListProps) {
       <div className="lg:mt-4 chats text-black">
         <div className="bg-[#ffe478] p-2">
           <div className="flex justify-between items-center">
-            <p className="text-lg">Agents in-play:</p>
             <h2 className="font-display shadow-solid text-2xl">Week 1</h2>
+            <WeekCountdown />
           </div>
 
           <div className="mt-2 bg-black w-full h-[1px]" />
