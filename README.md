@@ -14,6 +14,29 @@ and should be suitable from everything from a simple project to play around with
 A secondary goal is to make a JS/TS framework available as most simulators in this space
 (including the original paper above) are written in Python.
 
+# ElonsDev Log:
+
+#### Monday 20th January
+
+- Finished off initial MVP (WIP SINCE DECEMBER)
+
+#### Tuesday 21st January
+
+- launched the website/dapp and clams on pump.fun.
+- Monitored backend for errors & fixed constants bug fron making activities longer
+
+#### Wednesday 22nd January
+
+- Fixed reported front-end bugs.
+- Applied for clams to be listed on coingecko.
+- Started working on expanding team by setting up meetings.
+
+#### Thursday 23rd January
+
+- Added countdown timer for end of week.
+- Add Replicate for new daily music generation.
+- Work on agent summaries [WIP]
+
 ## Overview
 
 - 💻 [Stack](#stack)
