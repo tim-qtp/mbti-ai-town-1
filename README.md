@@ -23,7 +23,9 @@ A secondary goal is to make a JS/TS framework available as most simulators in th
 #### Tuesday 21st January
 
 - launched the website/dapp and clams on pump.fun.
-- Monitored backend for errors & fixed constants bug fron making activities longer
+- Monitored backend for errors & fixed constants bug from making activities longer
+- paid dexscreener
+- paid x premium
 
 #### Wednesday 22nd January
 
@@ -35,6 +37,7 @@ A secondary goal is to make a JS/TS framework available as most simulators in th
 
 - Added countdown timer for end of week.
 - Add Replicate for new daily music generation.
+- Add DevLog and Issues from community suggestions on X.
 - Work on agent summaries [WIP]
 
 ## Overview
