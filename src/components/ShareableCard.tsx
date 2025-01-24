@@ -7,7 +7,7 @@ interface ShareableCardProps {
 
 export const ShareableCard: React.FC<ShareableCardProps> = ({ playerName, description }) => {
   const baseUrl = 'https://artificialisle.lol';
-  const shareUrl = `${baseUrl}/ai/${playerName.toLowerCase().split(' ')[0]}.html`;
+  const shareUrl = `${baseUrl}/ai/${playerName.toLowerCase().split(' ')[0]}.html?a=1`;
 
   const shareOnTwitter = () => {
     const text = encodeURIComponent(`Check out ${playerName} in Artificial Isle! `);
@@ -18,7 +18,7 @@ export const ShareableCard: React.FC<ShareableCardProps> = ({ playerName, descri
   return (
     <div className="mt-1">
       <p className="mb-4">{description}</p>
-      {/*  <div className="flex items-center justify-between space-x-2">
+      <div className="flex items-center justify-between space-x-2">
         <img
           src={`/assets/agents-social-image/${playerName}.png`}
           alt={playerName}
@@ -33,7 +33,7 @@ export const ShareableCard: React.FC<ShareableCardProps> = ({ playerName, descri
         >
           Share on Twitter
         </button>
-      </div> */}
+      </div>
     </div>
   );
 };
