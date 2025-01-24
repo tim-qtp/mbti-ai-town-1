@@ -7,7 +7,7 @@ interface ShareableCardProps {
 
 export const ShareableCard: React.FC<ShareableCardProps> = ({ playerName, description }) => {
   const baseUrl = 'https://artificialisle.lol';
-  const shareUrl = `${baseUrl}/ai/${playerName}.html`;
+  const shareUrl = `${baseUrl}/ai/${playerName.toLowerCase().split(' ')[0]}.html`;
 
   const shareOnTwitter = () => {
     const text = encodeURIComponent(`Check out ${playerName} in Artificial Isle! `);
@@ -18,18 +18,18 @@ export const ShareableCard: React.FC<ShareableCardProps> = ({ playerName, descri
   return (
     <div className="mt-1">
       <p className="mb-4">{description}</p>
-      {/*  <div className="flex items-center space-x-2">
+      {/*  <div className="flex items-center justify-between space-x-2">
         <img
           src={`/assets/agents-social-image/${playerName}.png`}
           alt={playerName}
-          className="h-24 w-24 object-cover rounded-full"
+          className="h-14 w-14 object-cover "
           onError={(e) => {
             e.currentTarget.src = '/assets/agents-social-image/Stella.png';
           }}
         />
         <button
           onClick={shareOnTwitter}
-          className="button text-white bg-clay-700 px-4 py-2 rounded-full hover:bg-clay-600 transition-colors"
+          className="button text-white bg-clay-700 px-4 py-1 rounded-full hover:bg-clay-600 transition-colors"
         >
           Share on Twitter
         </button>
