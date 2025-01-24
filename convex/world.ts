@@ -255,3 +255,19 @@ export const previousConversation = query({
     return null;
   },
 });
+
+export const recentMemories = query({
+  args: {
+    playerId,
+  },
+  handler: async (ctx, args) => {
+    // Retrieve recent memories for the specific player in the given world
+    const memories = await ctx.db
+      .query('memories')
+      .withIndex('playerId', (q) => q.eq('playerId', args.playerId))
+      .order('desc')
+      .first();
+
+    return memories;
+  },
+});
