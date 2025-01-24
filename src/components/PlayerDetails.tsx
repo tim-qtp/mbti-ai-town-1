@@ -12,6 +12,7 @@ import { ServerGame } from '../hooks/serverGame';
 import { getBalance, SendSolButton } from './WalletComponent';
 import AgentList from './AgentList';
 import { useEffect, useState } from 'react';
+import { ShareableCard } from './ShareableCard';
 
 export default function PlayerDetails({
   worldId,
@@ -220,15 +221,24 @@ export default function PlayerDetails({
         </>
       )}
       {!playerConversation && player.activity && player.activity.until > Date.now() && (
-        <div className="box flex-grow mt-6">
-          <h2 className="bg-[#964253] text-base sm:text-lg text-center">
-            {player.activity.description}
-          </h2>
-        </div>
+        <>
+          {' '}
+          <div className="box flex-grow mt-6">
+            <h2 className="bg-[#964253] text-base sm:text-lg text-center">
+              {player.activity.description}
+            </h2>
+          </div>
+        </>
       )}
+
       <div className="desc my-6">
         <p className="leading-tight -m-4 bg-[#964253] text-base sm:text-sm">
-          {!isMe && playerDescription?.description}
+          {!isMe && (
+            <ShareableCard
+              playerName={playerDescription!.name}
+              description={playerDescription!.description}
+            />
+          )}
           {isMe && <i>This is you!</i>}
           {!isMe && inConversationWithMe && (
             <>
