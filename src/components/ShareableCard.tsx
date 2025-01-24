@@ -7,10 +7,10 @@ interface ShareableCardProps {
 
 export const ShareableCard: React.FC<ShareableCardProps> = ({ playerName, description }) => {
   const baseUrl = 'https://artificialisle.lol';
-  const shareUrl = `${baseUrl}/agent/${playerName}`;
+  const shareUrl = `${baseUrl}/ai/${playerName}.html`;
 
   const shareOnTwitter = () => {
-    const text = encodeURIComponent(`Check out ${playerName} in Artificial Isle! ${description}`);
+    const text = encodeURIComponent(`Check out ${playerName} in Artificial Isle! `);
     const twitterShareUrl = `https://twitter.com/intent/tweet?text=${text}&url=${encodeURIComponent(shareUrl)}`;
     window.open(twitterShareUrl, '_blank');
   };
