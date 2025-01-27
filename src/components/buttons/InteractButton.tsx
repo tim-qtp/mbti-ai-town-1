@@ -3,31 +3,60 @@ import { toast } from 'react-toastify';
 import interactImg from '../../../assets/interact.svg';
 import { useConvex, useMutation, useQuery } from 'convex/react';
 import { api } from '../../../convex/_generated/api';
-// import { SignInButton } from '@clerk/clerk-react';
 import { ConvexError } from 'convex/values';
 import { Id } from '../../../convex/_generated/dataModel';
-import { useCallback } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { waitForInput } from '../../hooks/sendInput';
 import { useServerGame } from '../../hooks/serverGame';
+import { getWalletTokens } from '../WalletComponent';
+import { useWallet } from '@jup-ag/wallet-adapter';
 
 export default function InteractButton() {
-  // const { isAuthenticated } = useConvexAuth();
+  const { connected, publicKey } = useWallet();
+  const [hasEnoughTokens, setHasEnoughTokens] = useState<boolean>(false);
+  const [isCheckingTokens, setIsCheckingTokens] = useState<boolean>(true);
+
   const worldStatus = useQuery(api.world.defaultWorldStatus);
   const worldId = worldStatus?.worldId;
   const game = useServerGame(worldId);
-  const humanTokenIdentifier = useQuery(api.world.userStatus, worldId ? { worldId } : 'skip');
+  const walletShort = publicKey ? publicKey.toString().slice(0, 6) : null;
   const userPlayerId =
-    game && [...game.world.players.values()].find((p) => p.human === humanTokenIdentifier)?.id;
+    game && [...game.world.players.values()].find((p) => p.human === walletShort)?.id;
   const join = useMutation(api.world.joinWorld);
   const leave = useMutation(api.world.leaveWorld);
   const isPlaying = !!userPlayerId;
 
+  useEffect(() => {
+    const checkTokens = async () => {
+      if (!connected || !publicKey) {
+        setHasEnoughTokens(false);
+        setIsCheckingTokens(false);
+        return;
+      }
+
+      try {
+        const tokenAmount = await getWalletTokens(publicKey.toString());
+        setHasEnoughTokens(tokenAmount > 0);
+      } catch (error) {
+        console.error('Error checking tokens:', error);
+        setHasEnoughTokens(false);
+      } finally {
+        setIsCheckingTokens(false);
+      }
+    };
+
+    checkTokens();
+  }, [connected, publicKey]);
+
   const convex = useConvex();
   const joinInput = useCallback(
     async (worldId: Id<'worlds'>) => {
+      if (!publicKey) return;
+
       let inputId;
       try {
-        inputId = await join({ worldId });
+        const walletShort = publicKey.toString().slice(0, 6);
+        inputId = await join({ worldId, walletAddress: walletShort });
       } catch (e: any) {
         if (e instanceof ConvexError) {
           toast.error(e.data);
@@ -41,35 +70,33 @@ export default function InteractButton() {
         toast.error(e.message);
       }
     },
-    [convex],
+    [convex, join, publicKey],
   );
 
   const joinOrLeaveGame = () => {
-    if (
-      !worldId ||
-      // || !isAuthenticated
-      game === undefined
-    ) {
+    if (!worldId || game === undefined || !walletShort) {
       return;
     }
     if (isPlaying) {
       console.log(`Leaving game for player ${userPlayerId}`);
-      void leave({ worldId });
+      void leave({ worldId, walletAddress: walletShort });
     } else {
       console.log(`Joining game`);
       void joinInput(worldId);
     }
   };
-  // if (!isAuthenticated || game === undefined) {
-  //   return (
-  //     <SignInButton>
-  //       <Button imgUrl={interactImg}>Interact</Button>
-  //     </SignInButton>
-  //   );
-  // }
-  return (
-    <Button imgUrl={interactImg} onClick={joinOrLeaveGame}>
-      {isPlaying ? 'Leave' : 'Interact'}
-    </Button>
-  );
+
+  if (isCheckingTokens) {
+    return null;
+  }
+
+  if (hasEnoughTokens) {
+    return (
+      <Button imgUrl={interactImg} onClick={joinOrLeaveGame}>
+        {isPlaying ? 'Leave' : 'Interact'}
+      </Button>
+    );
+  }
+
+  return null;
 }

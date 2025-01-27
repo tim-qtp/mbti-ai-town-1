@@ -13,6 +13,7 @@ import { getBalance, SendSolButton } from './WalletComponent';
 import AgentList from './AgentList';
 import { useEffect, useState } from 'react';
 import { ShareableCard } from './ShareableCard';
+import { useWallet } from '@jup-ag/wallet-adapter';
 
 export default function PlayerDetails({
   worldId,
@@ -29,7 +30,11 @@ export default function PlayerDetails({
   setSelectedElement: SelectElement;
   scrollViewRef: React.RefObject<HTMLDivElement>;
 }) {
-  const humanTokenIdentifier = useQuery(api.world.userStatus, { worldId });
+  const { publicKey } = useWallet();
+  const walletShort = publicKey ? publicKey.toString().slice(0, 6) : null;
+  const humanTokenIdentifier = useQuery(api.world.userStatus, {
+    worldId,
+  });
   const players = [...game.world.players.values()];
   const humanPlayer = players.find((p) => p.human === humanTokenIdentifier);
   const humanConversation = humanPlayer ? game.world.playerConversation(humanPlayer) : undefined;
