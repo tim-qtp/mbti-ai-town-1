@@ -32,10 +32,8 @@ export default function PlayerDetails({
 }) {
   const { publicKey } = useWallet();
   const walletShort = publicKey ? publicKey.toString().slice(0, 6) : null;
-  const humanTokenIdentifier = useQuery(api.world.userStatus, {
-    worldId,
-    walletAddress: 'EiC9h9',
-  });
+  const humanTokenIdentifier =
+    useQuery(api.world.userStatus, { worldId: worldId, walletAddress: 'EiC9h9' }) ?? null;
   const players = [...game.world.players.values()];
   const humanPlayer = players.find((p) => p.human === humanTokenIdentifier);
   const humanConversation = humanPlayer ? game.world.playerConversation(humanPlayer) : undefined;
@@ -161,69 +159,69 @@ export default function PlayerDetails({
         </a>
       </div>
       {canInvite && (
-        <a
-          className={
-            'mt-6 button text-white shadow-solid text-xl cursor-pointer pointer-events-auto' +
-            pendingSuffix('startConversation')
-          }
-          onClick={onStartConversation}
-        >
-          <div className="h-full bg-clay-700 text-center">
-            <span>Start conversation</span>
-          </div>
-        </a>
+        <div className="button mt-6 bg-clay-700 rounded-full flex justify-center">
+          <a
+            className={
+              '  text-white bg-clay-700 w text-xl cursor-pointer pointer-events-auto' +
+              pendingSuffix('startConversation')
+            }
+            onClick={onStartConversation}
+          >
+            Start conversation
+          </a>
+        </div>
       )}
       {waitingForAccept && (
-        <a className="mt-6 button text-white shadow-solid text-xl cursor-pointer pointer-events-auto opacity-50">
-          <div className="h-full bg-clay-700 text-center">
-            <span>Waiting for accept...</span>
-          </div>
-        </a>
+        <div className="button mt-6 bg-clay-700 rounded-full flex justify-center">
+          <a className="  text-white  text-xl cursor-pointer pointer-events-auto opacity-50">
+            <div className=" bg-clay-700 text-center">Waiting for accept..</div>
+          </a>
+        </div>
       )}
       {waitingForNearby && (
-        <a className="mt-6 button text-white shadow-solid text-xl cursor-pointer pointer-events-auto opacity-50">
-          <div className="h-full bg-clay-700 text-center">
-            <span>Walking over...</span>
-          </div>
-        </a>
+        <div className="button mt-6 bg-clay-700 rounded-full flex justify-center">
+          <a className="  text-white  text-xl cursor-pointer pointer-events-auto opacity-50">
+            <div className=" bg-clay-700 text-center">Walking over..</div>
+          </a>
+        </div>
       )}
       {inConversationWithMe && (
-        <a
-          className={
-            'mt-6 button text-white shadow-solid text-xl cursor-pointer pointer-events-auto' +
-            pendingSuffix('leaveConversation')
-          }
-          onClick={onLeaveConversation}
-        >
-          <div className="h-full bg-clay-700 text-center">
-            <span>Leave conversation</span>
-          </div>
-        </a>
+        <div className="button mt-6 bg-clay-700 rounded-full flex justify-center">
+          <a
+            className={
+              '  text-white bg-clay-700 w text-xl cursor-pointer pointer-events-auto' +
+              pendingSuffix('leaveConversation')
+            }
+            onClick={onLeaveConversation}
+          >
+            Leave conversation
+          </a>
+        </div>
       )}
       {haveInvite && (
         <>
-          <a
-            className={
-              'mt-6 button text-white shadow-solid text-xl cursor-pointer pointer-events-auto' +
-              pendingSuffix('acceptInvite')
-            }
-            onClick={onAcceptInvite}
-          >
-            <div className="h-full bg-clay-700 text-center">
-              <span>Accept</span>
-            </div>
-          </a>
-          <a
-            className={
-              'mt-6 button text-white shadow-solid text-xl cursor-pointer pointer-events-auto' +
-              pendingSuffix('rejectInvite')
-            }
-            onClick={onRejectInvite}
-          >
-            <div className="h-full bg-clay-700 text-center">
-              <span>Reject</span>
-            </div>
-          </a>
+          <div className="button mt-6 bg-clay-700 rounded-full flex justify-center">
+            <a
+              className={
+                '  text-white bg-clay-700 w text-xl cursor-pointer pointer-events-auto' +
+                pendingSuffix('acceptInvite')
+              }
+              onClick={onAcceptInvite}
+            >
+              Accept
+            </a>
+          </div>
+          <div className="button mt-6 bg-clay-700 rounded-full flex justify-center">
+            <a
+              className={
+                '  text-white bg-clay-700 w text-xl cursor-pointer pointer-events-auto' +
+                pendingSuffix('rejectInvite')
+              }
+              onClick={onRejectInvite}
+            >
+              Reject
+            </a>
+          </div>
         </>
       )}
       {!playerConversation && player.activity && player.activity.until > Date.now() && (
