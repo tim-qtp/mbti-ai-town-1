@@ -36,7 +36,7 @@ export default function InteractButton() {
 
       try {
         const tokenAmount = await getWalletTokens(publicKey.toString());
-        setHasEnoughTokens(tokenAmount > 0);
+        setHasEnoughTokens(tokenAmount > 1000000);
       } catch (error) {
         console.error('Error checking tokens:', error);
         setHasEnoughTokens(false);

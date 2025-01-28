@@ -22,6 +22,7 @@ export const PixiGame = (props: {
   historicalTime: number | undefined;
   width: number;
   height: number;
+  walletAddress: string;
   setSelectedElement: SelectElement;
   togglePlayerDetail: Dispatch<SetStateAction<boolean>>;
 }) => {
@@ -30,7 +31,11 @@ export const PixiGame = (props: {
   const viewportRef = useRef<Viewport | undefined>();
 
   const humanTokenIdentifier =
-    useQuery(api.world.userStatus, { worldId: props.worldId, walletAddress: 'EiC9h9' }) ?? null;
+    useQuery(api.world.userStatus, {
+      worldId: props.worldId,
+      walletAddress: props.walletAddress,
+    }) ?? null;
+
   const humanPlayerId = [...props.game.world.players.values()].find(
     (p) => p.human === humanTokenIdentifier,
   )?.id;

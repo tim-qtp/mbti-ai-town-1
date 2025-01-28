@@ -13,6 +13,7 @@ import { DebugTimeManager } from './DebugTimeManager.tsx';
 import { GameId } from '../../convex/aiTown/ids.ts';
 import { useServerGame } from '../hooks/serverGame.ts';
 import Button from './buttons/Button.tsx';
+import { useWallet } from '@jup-ag/wallet-adapter';
 
 export const SHOW_DEBUG_UI = false;
 
@@ -47,6 +48,10 @@ export default function Game() {
   if (!worldId || !engineId || !game) {
     return null;
   }
+
+  const { publicKey } = useWallet();
+  const walletShort = publicKey ? publicKey.toString().slice(0, 6) : null;
+
   return (
     <div className="flex flex-col h-screen w-full lg:flex-row">
       {/* Game area (full width on mobile, right column on desktop) */}
@@ -64,6 +69,7 @@ export default function Game() {
                 width={width}
                 height={height}
                 historicalTime={historicalTime}
+                walletAddress={walletShort || ''}
                 setSelectedElement={setSelectedElement}
                 togglePlayerDetail={setIsPlayerDetailOpen}
               />

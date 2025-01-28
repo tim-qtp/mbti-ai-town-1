@@ -32,8 +32,11 @@ export default function PlayerDetails({
 }) {
   const { publicKey } = useWallet();
   const walletShort = publicKey ? publicKey.toString().slice(0, 6) : null;
-  const humanTokenIdentifier =
-    useQuery(api.world.userStatus, { worldId: worldId, walletAddress: 'EiC9h9' }) ?? null;
+
+  const humanTokenIdentifier = useQuery(
+    api.world.userStatus,
+    worldId && walletShort ? { worldId, walletAddress: walletShort } : 'skip',
+  );
   const players = [...game.world.players.values()];
   const humanPlayer = players.find((p) => p.human === humanTokenIdentifier);
   const humanConversation = humanPlayer ? game.world.playerConversation(humanPlayer) : undefined;
