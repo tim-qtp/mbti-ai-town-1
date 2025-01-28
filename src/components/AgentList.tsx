@@ -30,7 +30,7 @@ const agents: Agent[] = [
   },
   {
     name: 'Kurama',
-    address: 'H2PxCyH2PbMP2xBhut5qDrr8TwGztt1NdaPzBw1KZj3u',
+    address: '9F1aFaP9uKEisJ4RtVDx49S7Uhs6BaXxq2cJymNoApLR',
     id: 'p:0' as GameId<'players'>,
   },
   {
