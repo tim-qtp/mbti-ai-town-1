@@ -34,6 +34,7 @@ export default function PlayerDetails({
   const walletShort = publicKey ? publicKey.toString().slice(0, 6) : null;
   const humanTokenIdentifier = useQuery(api.world.userStatus, {
     worldId,
+    walletAddress: 'EiC9h9',
   });
   const players = [...game.world.players.values()];
   const humanPlayer = players.find((p) => p.human === humanTokenIdentifier);

@@ -97,6 +97,7 @@ export const restartDeadWorlds = internalMutation({
 export const userStatus = query({
   args: {
     worldId: v.id('worlds'),
+    walletAddress: v.string(),
   },
   handler: async (ctx, args) => {
     // const identity = await ctx.auth.getUserIdentity();
@@ -104,7 +105,10 @@ export const userStatus = query({
     //   return null;
     // }
     // return identity.tokenIdentifier;
-    return DEFAULT_NAME;
+
+    const name = args.walletAddress;
+
+    return name;
   },
 });
 

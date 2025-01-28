@@ -177,7 +177,7 @@ export default function Home() {
             <div className="flex gap-4 flex-grow ">
               {/*  <FreezeButton />*/}
 
-              {/*    <InteractButton /> */}
+              <InteractButton />
 
               <ConnectWalletButton />
 
