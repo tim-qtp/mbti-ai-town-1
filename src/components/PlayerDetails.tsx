@@ -38,7 +38,10 @@ export default function PlayerDetails({
     worldId && walletShort ? { worldId, walletAddress: walletShort } : 'skip',
   );
   const players = [...game.world.players.values()];
-  const humanPlayer = players.find((p) => p.human === humanTokenIdentifier);
+  // Only look for human player if we have a valid token identifier
+  const humanPlayer = humanTokenIdentifier
+    ? players.find((p) => p.human === humanTokenIdentifier)
+    : undefined;
   const humanConversation = humanPlayer ? game.world.playerConversation(humanPlayer) : undefined;
   // Always select the other player if we're in a conversation with them.
   if (humanPlayer && humanConversation) {
