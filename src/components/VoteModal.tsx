@@ -35,10 +35,7 @@ export const VoteModal: React.FC<VoteModalProps> = ({ isOpen, onClose, agent }) 
         <p className="mb-4">
           Agent's SOL address: <span className="font-mono break-all">{agent.address}</span>
         </p>
-        <p className="mb-4">
-          CLAM contract address:{' '}
-          <span className="font-mono break-all">{CLAM_CONTRACT_ADDRESS}</span>
-        </p>
+
         <div className="bg-yellow-100 border-l-4 border-red-500 text-yellow-700 p-4 mb-4">
           <p className="font-bold">Disclaimer:</p>
           <p>

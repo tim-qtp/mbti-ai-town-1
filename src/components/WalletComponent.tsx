@@ -6,6 +6,7 @@ import {
   Transaction,
   SystemProgram,
   LAMPORTS_PER_SOL,
+  AccountInfo,
 } from '@solana/web3.js';
 import { TOKEN_PROGRAM_ID, AccountLayout } from '@solana/spl-token';
 
@@ -13,6 +14,15 @@ import Button from './buttons/Button';
 
 import * as buffer from 'buffer';
 window.Buffer = buffer.Buffer;
+
+export async function getWalletTokens(walletAddress: string): Promise<number> {
+  try {
+    return await getBalance(walletAddress);
+  } catch (error) {
+    console.error('Error checking wallet balance:', error);
+    return 0;
+  }
+}
 
 export function ConnectWalletButton() {
   const { connected, disconnect } = useWallet();

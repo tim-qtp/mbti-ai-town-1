@@ -15,7 +15,7 @@ const agents: Agent[] = [
   {
     name: 'Alice',
     address: 'EiC9h9YLEGTdsU2GNcgPeNnpB9HwrQU8u9o4oY3LwrWd',
-    id: 'p:6' as GameId<'players'>,
+    id: 'p:8' as GameId<'players'>,
   },
   {
     name: 'Triumph',
@@ -29,19 +29,19 @@ const agents: Agent[] = [
     id: 'p:4' as GameId<'players'>,
   },
   {
-    name: 'Stella',
-    address: 'H2PxCyH2PbMP2xBhut5qDrr8TwGztt1NdaPzBw1KZj3u',
+    name: 'Kurama',
+    address: '9F1aFaP9uKEisJ4RtVDx49S7Uhs6BaXxq2cJymNoApLR',
     id: 'p:0' as GameId<'players'>,
   },
   {
     name: 'Pete',
     address: 'HPXvdSLmfyaMokvpk5562AP1yw4aVtzaAKJF82X1m21N',
-    id: 'p:8' as GameId<'players'>,
+    id: 'p:10' as GameId<'players'>,
   },
   {
-    name: 'Kira',
-    address: '8tZPb74cRyKdEeymW6dS4YT8wA2TajvXFALda9Mor641',
-    id: 'p:10' as GameId<'players'>,
+    name: 'Lambo',
+    address: '9s9k5X7EVkRtKE6PYzDVd9aU9qGFy5dHyiRya7sjCUxK',
+    id: 'p:6' as GameId<'players'>,
   },
 ];
 
@@ -101,7 +101,7 @@ export default function AgentList({ setSelectedElement }: AgentListProps) {
       <div className="lg:mt-4 chats text-black">
         <div className="bg-[#ffe478] p-2">
           <div className="flex justify-between items-center">
-            <h2 className="font-display shadow-solid text-2xl">Week 1</h2>
+            <h2 className="font-display shadow-solid text-2xl">Week 2</h2>
             <WeekCountdown />
           </div>
 

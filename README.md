@@ -40,6 +40,20 @@ A secondary goal is to make a JS/TS framework available as most simulators in th
 - Add DevLog and Issues from community suggestions on X.
 - Work on agent summaries [WIP]
 
+#### Friday 24th January
+
+- Add share card for agents
+
+#### Sunday 26th January
+
+- Work on tokengated access to enter the isle as yourself
+
+#### Monday 27th January
+
+- Finish tokengated access (1 million clams required)
+- Add new weeks agents
+- Reset Week
+
 ## Overview
 
 - 💻 [Stack](#stack)
