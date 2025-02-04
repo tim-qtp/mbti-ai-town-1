@@ -165,10 +165,10 @@ export default function PlayerDetails({
         </a>
       </div>
       {canInvite && (
-        <div className="button mt-6 bg-clay-700 rounded-full flex justify-center">
+        <div className="button mt-6  bg-clay-700  rounded-full flex justify-center">
           <a
             className={
-              '  text-white bg-clay-700 w text-xl cursor-pointer pointer-events-auto' +
+              '  text-white bg-clay-700   text-xl cursor-pointer pointer-events-auto' +
               pendingSuffix('startConversation')
             }
             onClick={onStartConversation}
