@@ -39,10 +39,10 @@ export default function Home() {
         url: 'https://artificialisle.lol', // origin must match your domain & subdomain
         icons: [''],
       },
-      projectId: '<your-project-id>',
+      projectId: '348609c02abbbbd74c3ea5a77c74e4ac',
       features: {
         analytics: false,
-        socials: ['google', 'x', 'apple'],
+        socials: ['x'],
         email: false,
       },
       enableWallets: false,
