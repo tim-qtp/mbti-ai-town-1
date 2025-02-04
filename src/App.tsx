@@ -9,12 +9,19 @@ import closeImg from '../assets/closeblack.svg';
 // import { UserButton } from '@clerk/clerk-react';
 // import { Authenticated, Unauthenticated } from 'convex/react';
 // import LoginButton from './components/buttons/LoginButton.tsx';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import ReactModal from 'react-modal';
 import MusicButton from './components/buttons/MusicButton.tsx';
 import Button from './components/buttons/Button.tsx';
-import { UnifiedWalletButton, UnifiedWalletProvider } from '@jup-ag/wallet-adapter';
-import { ConnectWalletButton, SendSolButton } from './components/WalletComponent.tsx';
+import { Adapter, UnifiedWalletProvider, WalletName } from '@jup-ag/wallet-adapter';
+import { useWrappedReownAdapter } from '@jup-ag/jup-mobile-adapter';
+import {
+  PhantomWalletAdapter,
+  SolflareWalletAdapter,
+  CoinbaseWalletAdapter,
+} from '@solana/wallet-adapter-wallets';
+
+import { ConnectWalletButton } from './components/WalletComponent.tsx';
 import InteractButton from './components/buttons/InteractButton.tsx';
 // import InteractButton from './components/buttons/InteractButton.tsx';
 // import FreezeButton from './components/FreezeButton.tsx';
@@ -23,6 +30,35 @@ import InteractButton from './components/buttons/InteractButton.tsx';
 export default function Home() {
   const [helpModalOpen, setHelpModalOpen] = useState(false);
   const [isGameMounted, setIsGameMounted] = useState(false);
+
+  const { reownAdapter, jupiterAdapter } = useWrappedReownAdapter({
+    appKitOptions: {
+      metadata: {
+        name: 'Artificial Island',
+        description: 'Connect to interact with the agents if you own 1m or more $clams.',
+        url: 'https://artificialisle.lol', // origin must match your domain & subdomain
+        icons: [''],
+      },
+      projectId: '348609c02abbbbd74c3ea5a77c74e4ac',
+      features: {
+        analytics: false,
+        socials: ['x'],
+        email: false,
+      },
+      enableWallets: false,
+    },
+  });
+
+  // Move wallets array to useMemo without the Hook inside
+  const wallets: Adapter[] = useMemo(() => {
+    return [
+      new PhantomWalletAdapter(),
+      new SolflareWalletAdapter(),
+      new CoinbaseWalletAdapter(),
+      reownAdapter,
+      jupiterAdapter,
+    ].filter((item) => item && item.name && item.icon) as Adapter[];
+  }, [reownAdapter, jupiterAdapter]);
 
   // Create an effect to watch the Game's output
   useEffect(() => {
@@ -46,23 +82,28 @@ export default function Home() {
     return () => observer.disconnect();
   }, []);
 
+  const createWalletName = (name: string): WalletName => {
+    return name as WalletName;
+  };
+
   return (
     <UnifiedWalletProvider
-      wallets={[]}
+      wallets={wallets}
       config={{
         autoConnect: false,
         env: 'mainnet-beta',
         metadata: {
           name: 'ai',
           description: 'ai',
-          url: 'localhost:5173',
-          iconUrls: ['https://jup.ag/favicon.ico'],
+          url: 'https://artificialisle.lol',
+          iconUrls: ['https://www.artificialisle.lol/favicon.ico'],
         },
         theme: 'dark',
 
         walletlistExplanation: {
           href: 'https://station.jup.ag/docs/additional-topics/wallet-list',
         },
+        lang: 'en',
       }}
     >
       <main className="relative flex min-h-screen flex-col items-center justify-between font-body game-">
@@ -174,7 +215,7 @@ export default function Home() {
           )}{' '}
           <Game />
           <footer className="absolute justify-end  lg:bottom-0 right-0  flex items-center  gap-3 p-2 lg:p-6 flex-wrap ">
-            <div className="flex gap-4 flex-grow ">
+            <div className="flex flex-wrap gap-4 flex-grow ">
               {/*  <FreezeButton />*/}
 
               <InteractButton />
