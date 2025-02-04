@@ -13,7 +13,13 @@ import { useEffect, useMemo, useState } from 'react';
 import ReactModal from 'react-modal';
 import MusicButton from './components/buttons/MusicButton.tsx';
 import Button from './components/buttons/Button.tsx';
-import { UnifiedWalletProvider, WalletName } from '@jup-ag/wallet-adapter';
+import { Adapter, UnifiedWalletProvider, WalletName } from '@jup-ag/wallet-adapter';
+import { useWrappedReownAdapter } from '@jup-ag/jup-mobile-adapter';
+import {
+  PhantomWalletAdapter,
+  SolflareWalletAdapter,
+  CoinbaseWalletAdapter,
+} from '@solana/wallet-adapter-wallets';
 
 import { ConnectWalletButton } from './components/WalletComponent.tsx';
 import InteractButton from './components/buttons/InteractButton.tsx';
@@ -24,6 +30,35 @@ import InteractButton from './components/buttons/InteractButton.tsx';
 export default function Home() {
   const [helpModalOpen, setHelpModalOpen] = useState(false);
   const [isGameMounted, setIsGameMounted] = useState(false);
+
+  const { reownAdapter, jupiterAdapter } = useWrappedReownAdapter({
+    appKitOptions: {
+      metadata: {
+        name: 'Your project name',
+        description: 'Your project description',
+        url: '', // origin must match your domain & subdomain
+        icons: [''],
+      },
+      projectId: '<your-project-id>',
+      features: {
+        analytics: false,
+        socials: ['google', 'x', 'apple'],
+        email: false,
+      },
+      enableWallets: false,
+    },
+  });
+
+  // Move wallets array to useMemo without the Hook inside
+  const wallets: Adapter[] = useMemo(() => {
+    return [
+      new PhantomWalletAdapter(),
+      new SolflareWalletAdapter(),
+      new CoinbaseWalletAdapter(),
+      reownAdapter,
+      jupiterAdapter,
+    ].filter((item) => item && item.name && item.icon) as Adapter[];
+  }, [reownAdapter, jupiterAdapter]);
 
   // Create an effect to watch the Game's output
   useEffect(() => {
@@ -53,7 +88,7 @@ export default function Home() {
 
   return (
     <UnifiedWalletProvider
-      wallets={[]}
+      wallets={wallets}
       config={{
         autoConnect: false,
         env: 'mainnet-beta',
