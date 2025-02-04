@@ -96,7 +96,7 @@ export default function AgentList({ setSelectedElement }: AgentListProps) {
       <div className="lg:mt-4 chats text-black">
         <div className="bg-[#ffe478] p-2">
           <div className="flex justify-between items-center">
-            <h2 className="font-display shadow-solid text-2xl">Week 2</h2>
+            <h2 className="font-display shadow-solid text-2xl">Week 3</h2>
             <WeekCountdown />
           </div>
 
