@@ -54,6 +54,22 @@ A secondary goal is to make a JS/TS framework available as most simulators in th
 - Add new weeks agents
 - Reset Week
 
+#### Tuesday 28th January
+
+- Check for bugs
+
+#### Thursday 29th January
+
+- Start work on mobile fixes
+
+#### Monday 3rd February
+
+- Finish wallet and mobile testing
+
+#### Tuesday 4th February
+
+- Push wallet and mobile branch
+
 ## Overview
 
 - 💻 [Stack](#stack)
