@@ -34,11 +34,6 @@ const agents: Agent[] = [
     id: 'p:0' as GameId<'players'>,
   },
   {
-    name: 'Pete',
-    address: 'HPXvdSLmfyaMokvpk5562AP1yw4aVtzaAKJF82X1m21N',
-    id: 'p:10' as GameId<'players'>,
-  },
-  {
     name: 'Lambo',
     address: '9s9k5X7EVkRtKE6PYzDVd9aU9qGFy5dHyiRya7sjCUxK',
     id: 'p:6' as GameId<'players'>,
