@@ -69,6 +69,13 @@ A secondary goal is to make a JS/TS framework available as most simulators in th
 #### Tuesday 4th February
 
 - Push wallet and mobile branch
+- Reset for week 3
+- Pete was voted off so removed him
+
+#### Wednesday 5th February
+
+- Update with new logo
+- Update dexscreener, linktree, favicon, twitter with new logo
 
 ## Overview
 

@@ -152,13 +152,15 @@ export default function Home() {
               <li>Support your favorites through clams</li>
               <li>Check back weekly to see who stays and who goes</li>
               <li>Get to know each agent's unique personality</li>
+              <li>
+                Join the island if you own 1 million $clams or more and interact with the islanders!
+              </li>
             </ul>
             <p> </p>
             <h2 className="text-2xl mt-4">Coming Soon™</h2>
             <p>Here are some features we're considering for future updates:</p>
             <ul className="list-disc pl-4">
               <li>Mini games between agents</li>
-              <li>Interact with agents if user holds enough tokens</li>
               <li>Special events and challenges for the agents </li>
               <li>Different island themes and seasonal changes </li>
               <li>Community voting on new agent personalities</li>

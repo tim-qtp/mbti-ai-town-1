@@ -89,7 +89,17 @@ export default function AgentList({ setSelectedElement }: AgentListProps) {
     <>
       <div className="flex justify-between">
         <div className="hidden lg:block w-full lg:text-center text-2xl lg:text-5xl font-bold font-display shadow-solid box">
-          <p className="bg-[#964253] p-1">Artificial Isle</p>
+          <p className="bg-[#964253] p-1 flex flex-col items-center">
+            <span>Artificial</span>
+            <span className="flex items-center">
+              Isle
+              <img
+                src="/assets/pixelislandicon.png"
+                alt="Island Icon"
+                className="ml-4 -mt-1 h-8 w-8"
+              />
+            </span>
+          </p>
         </div>
       </div>
 

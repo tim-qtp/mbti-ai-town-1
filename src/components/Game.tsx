@@ -86,7 +86,14 @@ export default function Game() {
           onClick={togglePlayerDetail}
         >
           <div className=" w-fit lg:w-full lg:text-center text-2xl lg:text-5xl font-bold font-display shadow-solid box">
-            <p className="bg-[#964253] p-1">Artificial Isle</p>
+            <p className="bg-[#964253] p-1 flex">
+              Artificial Isle{' '}
+              <img
+                src="/assets/pixelislandicon.png"
+                alt="Island Icon"
+                className="ml-4 mt-1 h-5 w-5"
+              />
+            </p>
           </div>
           <div className="connect-wallet">
             <button className=" flex  justify-center text-white shadow-solid  pointer-events-auto ">
