@@ -77,6 +77,16 @@ A secondary goal is to make a JS/TS framework available as most simulators in th
 - Update with new logo
 - Update dexscreener, linktree, favicon, twitter with new logo
 
+#### Saturday 8th February
+
+- Scope work required for suggested changes
+
+#### Tuesday 11th February
+
+- Reset for week 3
+- Add Dave to the isle
+- No1 voted off because too little votes submitted
+
 ## Overview
 
 - 💻 [Stack](#stack)

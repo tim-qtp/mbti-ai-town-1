@@ -9,7 +9,7 @@ export function WeekCountdown() {
   useEffect(() => {
     const calculateTimeRemaining = () => {
       const now = new Date();
-      const weekEnd = new Date(2025, 1, 11, 14, 0, 0); // Feb 4th, 2025 at 14:00 PM
+      const weekEnd = new Date(2025, 1, 18, 14, 0, 0); // Feb 4th, 2025 at 14:00 PM
 
       // Calculate time difference
       const timeDiff = weekEnd.getTime() - now.getTime();
