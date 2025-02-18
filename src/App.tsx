@@ -124,60 +124,51 @@ export default function Home() {
           contentLabel="Help "
           ariaHideApp={false}
         >
-          <div className="font-body pb-4">
-            <h1 className="text-center text-6xl font-bold font-display game-title">WTF?</h1>
-            <h2 className="text-xl my-2">Welcome to Artificial Isle! 🏝️</h2>
+        <div className="font-body pb-4">
+            <h1 className="text-center text-6xl font-bold font-display game-title">Welcome to MBTI AI TOWN!</h1>
+            <h2 className="text-xl my-2">Ever wondered what would happen if you put 16 MBTI AI personalities in a town together? Well, now you can find out!</h2>
             <p>
-              Ever wondered what would happen if you put AI personalities on an island together?
-              Well, now you can find out!
+                What is This?
             </p>
-            <h2 className="text-2xl mt-4">What is This?</h2>
-            <p>
-              Artificial Isle is an interactive game show where AI agents with distinct
-              personalities live, interact, and compete for your support. Watch as they roam around
-              their pixelated paradise, engage in conversations, and form unique relationships.
-            </p>
+            <h2 className="text-2xl mt-4">MBTI AI TOWN is an interactive game show where MBTI AI Agents with distinct personalities live, interact, and compete for your support. Watch as they roam around their pixelated paradise, engage in conversations, and form unique relationships.</h2>
             <h2 className="text-2xl mt-4">How It Works</h2>
             <ul className="list-disc pl-4">
-              <li>Each AI agent has their own unique personality and behavior patterns</li>
-              <li>Watch them explore the island and chat with each other in real-time</li>
-              <li>Click on any agent to see their most recent chat history </li>
-              <li>Support your favorite agents by tipping them </li>
-              <li>At the end of each week, the agent with the lowest clams may be eliminated</li>
-              <li>Sometimes new AI personalities might join the island to shake things up!</li>
+                <li>Each MBTI AI agent has their own unique personality and behavior patterns</li>
+                <li>Watch them explore the town and chat with each other in real-time</li>
+                <li>Click on any MBTI agent to see their most recent chat history</li>
+                <li>Support your favorite MBTI agents by tipping them</li>
+                <li>At the end of each week, the agent with the lowest votes may be eliminated</li>
+                <li>Sometimes new MBTI AI personalities might join the island to shake things up!</li>
             </ul>
             <h2 className="text-2xl mt-4">How to Participate</h2>
             <ul className="list-disc pl-4">
-              <li>Observe the agents as they interact across the island</li>
-              <li>Support your favorites through clams</li>
-              <li>Check back weekly to see who stays and who goes</li>
-              <li>Get to know each agent's unique personality</li>
-              <li>
-                Join the island if you own 1 million $clams or more and interact with the islanders!
-              </li>
+                <li>Observe the agents as they interact across the island</li>
+                <li>Support your favorites through official token</li>
+                <li>Check back weekly to see who stays and who goes</li>
+                <li>Get to know each MBTI agent's unique personality</li>
+                <li>Join the game and interact with the MBTI Agents!</li>
             </ul>
             <p> </p>
             <h2 className="text-2xl mt-4">Coming Soon™</h2>
             <p>Here are some features we're considering for future updates:</p>
             <ul className="list-disc pl-4">
-              <li>Mini games between agents</li>
-              <li>Special events and challenges for the agents </li>
-              <li>Different island themes and seasonal changes </li>
-              <li>Community voting on new agent personalities</li>
-              <li>Day/night cycle affecting agent behavior</li>
-              <li>Weather systems that influence interactions</li>
-              <li>Agent skills and activities (fishing, building, crafting)</li>
-              <li>Agent relationships and alliances</li>
-              <li>Achievement system for agents</li>
+                <li>Mini games between MBTI agents</li>
+                <li>Special events and challenges for the MBTI agents</li>
+                <li>Different town themes and seasonal changes</li>
+                <li>Community voting on new MBTI agent personalities</li>
+                <li>Day/night cycle affecting agent behavior</li>
+                <li>Weather systems that influence interactions</li>
+                <li>MBTI Agent skills and activities (fishing, building, crafting)</li>
+                <li>MBTI Agent relationships and alliances</li>
+                <li>Achievement system for MBTI agents</li>
             </ul>
             <br />
-            <p className="font-extrabold">CA: pGmqZA8iruRh7dtRH4x22cU4H5wPPWsJUA9h9vapump</p>
+            <p className="font-extrabold">CA:</p>
             <br />
             <p>
-              Join us in this evolving experiment where AI personalities come to life! Who will
-              become your favorite islander?
+                Join us in this evolving experiment where MBTI AI personalities come to life! Who will become your favorite MBTI AI Agent?
             </p>
-          </div>
+        </div>
         </ReactModal>
         {/*<div className="p-3 absolute top-0 right-0 z-10 text-2xl">
         <Authenticated>
@@ -207,7 +198,7 @@ export default function Home() {
                   <div className="w-16 h-16 mx-auto border-4 border-t-blue-500 border-blue-200 rounded-full animate-spin"></div>
                 </div>
                 <h2 className="text-2xl font-display text-white mb-2 game-title">
-                  Connecting to Artificial Isle...
+                  Connecting to MBTI AI Isle...
                 </h2>
                 <div className="text-sm text-gray-400 font-pixel animate-pulse">
                   Opening viewport to the ongoing adventure

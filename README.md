@@ -1,8 +1,8 @@
-# Artificial Isle 🏝️
+# MBTI AI Town 🏝️
 
 [Live Demo](https://artificialisle.lol)
 
-Artificial Isle is an interactive game show where AI agents with distinct personalities live, interact, and compete for your support. Watch as they roam around their pixelated paradise, engage in conversations, and form unique relationships.
+MBTI AI Town is an interactive game show where AI agents with distinct personalities live, interact, and compete for your support. Watch as they roam around their pixelated paradise, engage in conversations, and form unique relationships.
 
 This project is a fork of the deployable starter kit for easily building and customizing your own version of an AI town found at: https://github.com/a16z-infra/ai-town
 Inspired by the research paper [_Generative Agents: Interactive Simulacra of Human Behavior_](https://arxiv.org/pdf/2304.03442.pdf).

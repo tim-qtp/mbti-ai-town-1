@@ -87,7 +87,7 @@ export default function Game() {
         >
           <div className=" w-fit lg:w-full lg:text-center text-2xl lg:text-5xl font-bold font-display shadow-solid box">
             <p className="bg-[#964253] p-1 flex">
-              Artificial Isle{' '}
+              MBTI AI TOWN{' '}
               <img
                 src="/assets/pixelislandicon.png"
                 alt="Island Icon"
