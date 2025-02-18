@@ -83,9 +83,19 @@ A secondary goal is to make a JS/TS framework available as most simulators in th
 
 #### Tuesday 11th February
 
-- Reset for week 3
+- Reset for week 4
 - Add Dave to the isle
 - No1 voted off because too little votes submitted
+
+#### Friday 14th February
+
+- Discuss and plan season 2 gamification
+
+#### Tuesday 18th February
+
+- Reset for week 5
+- Remove Dave as he has no votes
+- votes not reset as they still under 100 each agent.
 
 ## Overview
 

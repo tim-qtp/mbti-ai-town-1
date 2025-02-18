@@ -38,11 +38,11 @@ const agents: Agent[] = [
     address: '9s9k5X7EVkRtKE6PYzDVd9aU9qGFy5dHyiRya7sjCUxK',
     id: 'p:6' as GameId<'players'>,
   },
-  {
+  /*   {
     name: 'Dave',
     address: '3F6L4ArRJEbij8MPim1yqR9z7Fvg4KcftSpgb97iGXna',
     id: 'p:10' as GameId<'players'>,
-  },
+  }, */
 ];
 
 interface AgentListProps {
@@ -111,7 +111,7 @@ export default function AgentList({ setSelectedElement }: AgentListProps) {
       <div className="lg:mt-4 chats text-black">
         <div className="bg-[#ffe478] p-2">
           <div className="flex justify-between items-center">
-            <h2 className="font-display shadow-solid text-2xl">Week 4</h2>
+            <h2 className="font-display shadow-solid text-2xl">Week 5</h2>
             <WeekCountdown />
           </div>
 
